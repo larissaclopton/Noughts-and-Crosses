@@ -30,23 +30,20 @@
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="NewGameTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiD-p4-Hbc"/>
-                                </connections>
                             </button>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96A-yZ-Umb">
                                 <rect key="frame" x="0.0" y="41" width="600" height="529"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-69-p9M" userLabel="Bar1">
-                                        <rect key="frame" x="172" y="217" width="256" height="8"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-69-p9M" userLabel="Bar1">
+                                        <rect key="frame" x="172" y="216" width="256" height="8"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="Q6Q-WE-Bgf"/>
                                             <constraint firstAttribute="width" constant="256" id="Wsj-Pl-OeU"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIO-4g-QbB" userLabel="Bar2">
-                                        <rect key="frame" x="172" y="305" width="256" height="8"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yIO-4g-QbB" userLabel="Bar2">
+                                        <rect key="frame" x="172" y="304" width="256" height="8"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="256" id="k9y-Px-lsb"/>
@@ -69,104 +66,73 @@
                                             <constraint firstAttribute="height" constant="256" id="OqU-fa-gE8"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqb-dz-vWm" userLabel="P1">
-                                        <rect key="frame" x="172" y="137" width="77" height="80"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqb-dz-vWm" userLabel="P1">
+                                        <rect key="frame" x="172" y="136" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="77" id="ZOk-rW-41B"/>
                                             <constraint firstAttribute="height" constant="80" id="if9-hS-0Bc"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellOneTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhe-Yf-LQM"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-lg-qiA" userLabel="P2">
-                                        <rect key="frame" x="257" y="137" width="86" height="80"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-lg-qiA" userLabel="P2">
+                                        <rect key="frame" x="257" y="136" width="86" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="fQu-jD-aFs"/>
                                             <constraint firstAttribute="width" constant="86" id="lZL-49-Hrb"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellTwoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B6o-gD-g6x"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Pf-BKW" userLabel="P3">
-                                        <rect key="frame" x="351" y="137" width="77" height="80"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Pf-BKW" userLabel="P3">
+                                        <rect key="frame" x="351" y="136" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="RE5-Yx-e6k"/>
                                             <constraint firstAttribute="width" constant="77" id="bUH-ne-yek"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellThreeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j3Q-52-UCV"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnn-95-7Go" userLabel="P4">
-                                        <rect key="frame" x="172" y="225" width="77" height="80"/>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnn-95-7Go" userLabel="P4">
+                                        <rect key="frame" x="172" y="224" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="tGn-7M-bfM"/>
                                             <constraint firstAttribute="width" constant="77" id="wfG-35-aaD"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellFourTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IgE-az-ZeY"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-mY-X5T" userLabel="P5">
-                                        <rect key="frame" x="257" y="225" width="86" height="78"/>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-mY-X5T" userLabel="P5">
+                                        <rect key="frame" x="277" y="244" width="46" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="86" id="2WG-fQ-AXR"/>
-                                            <constraint firstAttribute="height" constant="78" id="VvW-MB-AGy"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="CellFiveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ogx-sN-F3X"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swM-cL-STt" userLabel="P6">
-                                        <rect key="frame" x="351" y="225" width="77" height="80"/>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swM-cL-STt" userLabel="P6">
+                                        <rect key="frame" x="351" y="224" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="Df4-ph-5GD"/>
                                             <constraint firstAttribute="width" constant="77" id="kJh-yl-z6f"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellSixTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q4R-7Z-rM4"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2l-SI-er4" userLabel="P7">
-                                        <rect key="frame" x="172" y="313" width="77" height="80"/>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2l-SI-er4" userLabel="P7">
+                                        <rect key="frame" x="172" y="312" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="g67-YZ-wse"/>
                                             <constraint firstAttribute="width" constant="77" id="hCt-Iz-Va0"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellSevenTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoK-wV-mGl"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-2G-OuS" userLabel="P8">
-                                        <rect key="frame" x="257" y="313" width="86" height="80"/>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-2G-OuS" userLabel="P8">
+                                        <rect key="frame" x="257" y="312" width="86" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="RdH-EH-W1K"/>
                                             <constraint firstAttribute="width" constant="86" id="d2z-ob-4ba"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellEightTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YE7-Uh-nJa"/>
-                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-AR-vqx" userLabel="P9">
-                                        <rect key="frame" x="351" y="313" width="77" height="80"/>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-AR-vqx" userLabel="P9">
+                                        <rect key="frame" x="351" y="312" width="77" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="77" id="E3c-3E-teE"/>
                                             <constraint firstAttribute="height" constant="80" id="Xrb-qe-G1m"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="CellNineTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EaB-uC-pte"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -233,10 +199,6 @@
                             <constraint firstItem="kGR-rh-nn6" firstAttribute="top" secondItem="96A-yZ-Umb" secondAttribute="bottom" id="qc8-mj-IDH"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="BoardView" destination="8bC-Xf-vdC" id="dVJ-dF-Eqb"/>
-                        <outlet property="NewGame" destination="kGR-rh-nn6" id="xHq-US-LtR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
