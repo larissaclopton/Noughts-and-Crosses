@@ -8,7 +8,7 @@
         <!--Board View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BoardViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BoardViewController" customModule="o_X" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -30,6 +30,9 @@
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="newGameButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Bx-5X-Ot1"/>
+                                </connections>
                             </button>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96A-yZ-Umb">
                                 <rect key="frame" x="0.0" y="41" width="600" height="529"/>
@@ -73,6 +76,9 @@
                                             <constraint firstAttribute="width" constant="77" id="ZOk-rW-41B"/>
                                             <constraint firstAttribute="height" constant="80" id="if9-hS-0Bc"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1OM-BK-Vgy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-lg-qiA" userLabel="P2">
                                         <rect key="frame" x="257" y="136" width="86" height="80"/>
@@ -81,6 +87,9 @@
                                             <constraint firstAttribute="height" constant="80" id="fQu-jD-aFs"/>
                                             <constraint firstAttribute="width" constant="86" id="lZL-49-Hrb"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7hp-9d-QGv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llU-Pf-BKW" userLabel="P3">
                                         <rect key="frame" x="351" y="136" width="77" height="80"/>
@@ -89,6 +98,9 @@
                                             <constraint firstAttribute="height" constant="80" id="RE5-Yx-e6k"/>
                                             <constraint firstAttribute="width" constant="77" id="bUH-ne-yek"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gJQ-ta-GID"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnn-95-7Go" userLabel="P4">
                                         <rect key="frame" x="172" y="224" width="77" height="80"/>
@@ -97,10 +109,16 @@
                                             <constraint firstAttribute="height" constant="80" id="tGn-7M-bfM"/>
                                             <constraint firstAttribute="width" constant="77" id="wfG-35-aaD"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Os-nm-PrH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-mY-X5T" userLabel="P5">
                                         <rect key="frame" x="277" y="244" width="46" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sPm-ez-QhQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swM-cL-STt" userLabel="P6">
                                         <rect key="frame" x="351" y="224" width="77" height="80"/>
@@ -109,6 +127,9 @@
                                             <constraint firstAttribute="height" constant="80" id="Df4-ph-5GD"/>
                                             <constraint firstAttribute="width" constant="77" id="kJh-yl-z6f"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ux-9T-XEK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2l-SI-er4" userLabel="P7">
                                         <rect key="frame" x="172" y="312" width="77" height="80"/>
@@ -117,6 +138,9 @@
                                             <constraint firstAttribute="height" constant="80" id="g67-YZ-wse"/>
                                             <constraint firstAttribute="width" constant="77" id="hCt-Iz-Va0"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7rK-QG-WHo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-2G-OuS" userLabel="P8">
                                         <rect key="frame" x="257" y="312" width="86" height="80"/>
@@ -125,6 +149,9 @@
                                             <constraint firstAttribute="height" constant="80" id="RdH-EH-W1K"/>
                                             <constraint firstAttribute="width" constant="86" id="d2z-ob-4ba"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iks-6W-IFA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-AR-vqx" userLabel="P9">
                                         <rect key="frame" x="351" y="312" width="77" height="80"/>
@@ -133,6 +160,9 @@
                                             <constraint firstAttribute="width" constant="77" id="E3c-3E-teE"/>
                                             <constraint firstAttribute="height" constant="80" id="Xrb-qe-G1m"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LXj-Nc-305"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -199,6 +229,9 @@
                             <constraint firstItem="kGR-rh-nn6" firstAttribute="top" secondItem="96A-yZ-Umb" secondAttribute="bottom" id="qc8-mj-IDH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newGameButton" destination="kGR-rh-nn6" id="9b9-9Q-mQn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
