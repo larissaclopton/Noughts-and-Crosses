@@ -9,6 +9,8 @@ class BoardViewController: UIViewController {
     
     @IBOutlet weak var newGameButton: UIButton!
     
+    @IBOutlet weak var boardView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,7 +18,7 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func newGameButtonTapped(sender: UIButton) {
-        print("New Game button has been tapped.")
+        print("Let's play a new game!")
     }
     
     @IBAction func cellTapped(sender: UIButton){
@@ -24,5 +26,9 @@ class BoardViewController: UIViewController {
     }
     
 
+    @IBAction func logoutTapped(sender: UIButton) {
+        print("Time to logout!")
+    }
+    
 }
 

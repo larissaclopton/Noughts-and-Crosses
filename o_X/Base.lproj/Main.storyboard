@@ -211,6 +211,9 @@
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ur-J0-NEX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -230,6 +233,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="boardView" destination="96A-yZ-Umb" id="c9F-R6-2ae"/>
                         <outlet property="newGameButton" destination="kGR-rh-nn6" id="9b9-9Q-mQn"/>
                     </connections>
                 </viewController>
