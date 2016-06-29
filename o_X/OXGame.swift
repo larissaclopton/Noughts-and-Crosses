@@ -27,7 +27,7 @@ enum OXGameState {
 class OXGame {
     
     // initial board of 9 empty cells
-    private var board:[CellType] = [CellType.Empty, CellType.Empty, CellType.Empty, CellType.Empty, CellType.Empty, CellType.Empty, CellType.Empty, CellType.Empty]
+    private var board:[CellType] = Array(count: 9, repeatedValue: CellType.Empty)
     
     private var startType:CellType = CellType.X
     
@@ -39,7 +39,7 @@ class OXGame {
     
     func turnCount() -> Int {
         // returns the number of counts in a game
-        return self.numTurns
+        return numTurns
         
     }
     
@@ -56,16 +56,45 @@ class OXGame {
     }
     
     func playMove(cellNumber: Int) -> CellType {
-        board[cellNumber] = self.currentPlayer
-        return self.currentPlayer
+        // update the board based on the current player's move
+        board[cellNumber] = currentPlayer
+        return currentPlayer
     }
     
     func gameWon() -> Bool {
         // return true if a player has won
         // winning cases - 123, 456, 789, 147, 258, 369, 159, 357
-        if(board[1] == board[2] == board[3]) {
-
-}
+        if((board[1], board[2]) == (board[2], board[3]) ||
+            (board[4], board[5]) == (board[5], board[6]) ||
+            (board[7], board[8]) == (board[8], board[9]) ||
+            (board[1], board[4]) == (board[4], board[7]) ||
+            (board[2], board[5]) == (board[5], board[8]) ||
+            (board[3], board[6]) == (board[6], board[9]) ||
+            (board[1], board[5]) == (board[5], board[9]) ||
+            (board[3], board[5]) == (board[5], board[7])) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
+    func state() -> OXGameState {
+        // return the state of the game
+        if(gameWon()) {
+            return OXGameState.Won
+        }
+        if(turnCount() == 9) {
+            return OXGameState.Tie
+        }
+        else {
+            return OXGameState.InProgress
+        }
+    }
+    
+    func reset() {
+        // reset all cells to be empty and the turn count to be 0
+        board = Array(count: 9, repeatedValue: CellType.Empty)
+        numTurns = 0
+    }
 }
