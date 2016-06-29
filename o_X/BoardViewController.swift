@@ -7,6 +7,8 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
+    var gameObject = OXGame()
+    
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var boardView: UIView!
