@@ -6,7 +6,7 @@
 //  Copyright © 2016 iX. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum CellType : String {
     

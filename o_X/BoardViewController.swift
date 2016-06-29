@@ -21,7 +21,6 @@ class BoardViewController: UIViewController {
     
     @IBAction func newGameButtonTapped(sender: UIButton) {
         print("Let's play a new game!")
-        gameObject.reset()
     }
     
     @IBAction func cellTapped(sender: UIButton){
@@ -33,7 +32,7 @@ class BoardViewController: UIViewController {
         print("Time to logout!")
     }
     
-    // TODO: action for back/logout button?, using gameWon and displaying message after win, using state
+    // TODO: action for back/logout button?, using gameWon and displaying message after win, using state, what to do with OXGameState?
     
 }
 
