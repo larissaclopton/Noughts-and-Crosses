@@ -76,6 +76,10 @@
                                             <constraint firstAttribute="width" constant="77" id="ZOk-rW-41B"/>
                                             <constraint firstAttribute="height" constant="80" id="if9-hS-0Bc"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1OM-BK-Vgy"/>
                                         </connections>
@@ -87,6 +91,10 @@
                                             <constraint firstAttribute="height" constant="80" id="fQu-jD-aFs"/>
                                             <constraint firstAttribute="width" constant="86" id="lZL-49-Hrb"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7hp-9d-QGv"/>
                                         </connections>
@@ -98,6 +106,10 @@
                                             <constraint firstAttribute="height" constant="80" id="RE5-Yx-e6k"/>
                                             <constraint firstAttribute="width" constant="77" id="bUH-ne-yek"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gJQ-ta-GID"/>
                                         </connections>
@@ -109,6 +121,10 @@
                                             <constraint firstAttribute="height" constant="80" id="tGn-7M-bfM"/>
                                             <constraint firstAttribute="width" constant="77" id="wfG-35-aaD"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Os-nm-PrH"/>
                                         </connections>
@@ -116,19 +132,12 @@
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-mY-X5T" userLabel="P5">
                                         <rect key="frame" x="277" y="244" width="46" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sPm-ez-QhQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swM-cL-STt" userLabel="P6">
-                                        <rect key="frame" x="351" y="224" width="77" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="Df4-ph-5GD"/>
-                                            <constraint firstAttribute="width" constant="77" id="kJh-yl-z6f"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ux-9T-XEK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2l-SI-er4" userLabel="P7">
@@ -138,6 +147,10 @@
                                             <constraint firstAttribute="height" constant="80" id="g67-YZ-wse"/>
                                             <constraint firstAttribute="width" constant="77" id="hCt-Iz-Va0"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7rK-QG-WHo"/>
                                         </connections>
@@ -149,6 +162,10 @@
                                             <constraint firstAttribute="height" constant="80" id="RdH-EH-W1K"/>
                                             <constraint firstAttribute="width" constant="86" id="d2z-ob-4ba"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iks-6W-IFA"/>
                                         </connections>
@@ -160,8 +177,27 @@
                                             <constraint firstAttribute="width" constant="77" id="E3c-3E-teE"/>
                                             <constraint firstAttribute="height" constant="80" id="Xrb-qe-G1m"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LXj-Nc-305"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swM-cL-STt" userLabel="P6">
+                                        <rect key="frame" x="351" y="224" width="77" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Df4-ph-5GD"/>
+                                            <constraint firstAttribute="width" constant="77" id="kJh-yl-z6f"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ux-9T-XEK"/>
                                         </connections>
                                     </button>
                                 </subviews>
