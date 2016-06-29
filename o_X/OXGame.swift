@@ -40,25 +40,27 @@ class OXGame {
     func turnCount() -> Int {
         // returns the number of counts in a game
         return numTurns
-        
     }
     
     func whoseTurn() -> CellType {
         // return CellType of whose turn it is
         return self.currentPlayer
-        // should this alternate here or somewhere else?
-        /*if(currentPlayer == CellType.O) {
-            return CellType.X
+    }
+    
+    func updateTurn() {
+        if(currentPlayer == CellType.O) {
+            currentPlayer = CellType.X
         }
         else {
-            return CellType.O
-        }*/
+            currentPlayer = CellType.O
+        }
     }
     
     func playMove(cellNumber: Int) -> CellType {
         // update the board based on the current player's move
         board[cellNumber] = currentPlayer
-        return currentPlayer
+        updateTurn()
+        return board[cellNumber]
     }
     
     func gameWon() -> Bool {
