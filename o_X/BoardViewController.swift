@@ -51,10 +51,10 @@ class BoardViewController: UIViewController {
     @IBAction func cellTapped(sender: UIButton){
         
         // play the move
-        OXGameController.sharedInstance.playMove(sender.tag)
+        
         
         // set the button title
-        sender.setTitle(String(OXGameController.sharedInstance.getCurrentGame().currentPlayer), forState: UIControlState.Normal)
+        sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
         
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
@@ -62,7 +62,6 @@ class BoardViewController: UIViewController {
         if(gameState != OXGameState.InProgress) {
             cancelGame()
         }
-        
         
     }
     
