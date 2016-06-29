@@ -204,11 +204,11 @@
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ux-9T-XEK"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFa-GT-1Oj">
-                                        <rect key="frame" x="249" y="479" width="102" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFa-GT-1Oj">
+                                        <rect key="frame" x="172" y="479" width="256" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="jld-4M-KLF"/>
-                                            <constraint firstAttribute="width" constant="102" id="rg8-Ub-RRr"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="256" id="lJk-9o-3My"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -293,6 +293,7 @@
                         <outlet property="button7" destination="Q2l-SI-er4" id="QkD-Kz-IEh"/>
                         <outlet property="button8" destination="Iab-2G-OuS" id="smd-aa-N7G"/>
                         <outlet property="button9" destination="hqe-AR-vqx" id="EVu-XV-aY5"/>
+                        <outlet property="gameStateMessage" destination="kFa-GT-1Oj" id="4k6-38-NQC"/>
                         <outlet property="newGameButton" destination="kGR-rh-nn6" id="9b9-9Q-mQn"/>
                     </connections>
                 </viewController>

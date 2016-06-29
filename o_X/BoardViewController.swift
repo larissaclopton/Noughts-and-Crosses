@@ -11,6 +11,9 @@ class BoardViewController: UIViewController {
     
     @IBOutlet weak var boardView: UIView!
     
+    @IBOutlet weak var gameStateMessage: UILabel!
+    
+    
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -44,22 +47,31 @@ class BoardViewController: UIViewController {
         button9.setTitle("", forState: UIControlState.Normal)
     }
     
+    func clearMessage() {
+        gameStateMessage.text = ""
+    }
+    
     @IBAction func newGameButtonTapped(sender: UIButton) {
         cancelGame()
+        clearMessage()
     }
     
     @IBAction func cellTapped(sender: UIButton){
         
-        // play the move
-        
-        
-        // set the button title
+        // play the move and set the button title
         sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
         
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
-        if(gameState != OXGameState.InProgress) {
-            var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("cancelGame"), userInfo: nil, repeats: true)
+        if (gameState == OXGameState.InProgress) {
+            return
+        }
+        else if (gameState == OXGameState.Tie) {
+            gameStateMessage.text = "It's a tie!"
+        }
+        else {
+            OXGameController.sharedInstance.getCurrentGame().updateTurn()
+            gameStateMessage.text = "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won!"
         }
         
     }
