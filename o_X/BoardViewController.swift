@@ -59,7 +59,7 @@ class BoardViewController: UIViewController {
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
         if(gameState != OXGameState.InProgress) {
-            cancelGame()
+            var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("cancelGame"), userInfo: nil, repeats: true)
         }
         
     }
