@@ -7,8 +7,6 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
-    var gameObject = OXGame()
-    
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var boardView: UIView!
@@ -30,7 +28,10 @@ class BoardViewController: UIViewController {
     }
     
     func cancelGame() {
+        
+        // restart the game
         OXGameController.sharedInstance.restartGame()
+        
         // set all button titles to empty
         button1.setTitle("", forState: UIControlState.Normal)
         button2.setTitle("", forState: UIControlState.Normal)
@@ -44,31 +45,24 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func newGameButtonTapped(sender: UIButton) {
-        print("Let's play a new game!")
         cancelGame()
     }
     
     @IBAction func cellTapped(sender: UIButton){
-        print("Cell \(sender.tag) has been tapped")
+        
+        // play the move
         OXGameController.sharedInstance.playMove(sender.tag)
-        sender.setTitle(String(gameObject.currentPlayer), forState: UIControlState.Normal)
         
-        let gameState = gameObject.state()
+        // set the button title
+        sender.setTitle(String(OXGameController.sharedInstance.getCurrentGame().currentPlayer), forState: UIControlState.Normal)
         
-        // game in progress
-        if(gameState == OXGameState.InProgress) {
-            return
+        let gameState = OXGameController.sharedInstance.getCurrentGame().state()
+        
+        
+        if(gameState != OXGameState.InProgress) {
+            cancelGame()
         }
         
-        // game has concluded
-        if (gameState == OXGameState.Won) {
-            print("We have a winner!")
-        }
-        else if (gameState == OXGameState.Tie) {
-            print("It's a draw!")
-        }
-        
-        cancelGame()
         
     }
     

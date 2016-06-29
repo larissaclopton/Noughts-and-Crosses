@@ -9,6 +9,7 @@
 import UIKit
 
 class OXGameController {
+    
     static var sharedInstance = OXGameController()
     private var currentGame = OXGame()
     

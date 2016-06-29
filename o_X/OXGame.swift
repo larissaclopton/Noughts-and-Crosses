@@ -26,14 +26,10 @@ enum OXGameState {
 
 class OXGame {
     
-    // initial board of 9 empty cells
     private var board = Array(count: 9, repeatedValue: CellType.Empty)
-    
     private var startType = CellType.X
-    
     var numTurns = 0
     
-    // might need to change this
     // X is the first player
     var currentPlayer = CellType.X
     
@@ -57,16 +53,23 @@ class OXGame {
     }
     
     func playMove(cellNumber: Int) -> CellType {
-        // update the board based on the current player's move
+        
+        
         board[cellNumber] = whoseTurn()
-        numTurns += 1
-        updateTurn()
+        
+        if(numTurns == 0) {
+            numTurns += 1
+        }
+        else {
+            numTurns += 1
+            updateTurn()
+        }
+        
         return board[cellNumber]
     }
     
     func gameWon() -> Bool {
         // return true if a player has won
-        // winning cases - 123, 456, 789, 147, 258, 369, 159, 357
         if((board[0] != CellType.Empty && (board[0], board[1]) == (board[1], board[2])) ||
             (board[3] != CellType.Empty && (board[3], board[4]) == (board[4], board[5])) ||
             (board[6] != CellType.Empty && (board[6], board[7]) == (board[7], board[8]))) {
@@ -103,5 +106,6 @@ class OXGame {
         // reset all cells to be empty and the turn count to be 0
         board = Array(count: 9, repeatedValue: CellType.Empty)
         numTurns = 0
+        currentPlayer = CellType.X
     }
 }
