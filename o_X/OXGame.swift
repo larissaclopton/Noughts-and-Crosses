@@ -44,7 +44,7 @@ class OXGame {
     
     func whoseTurn() -> CellType {
         // return CellType of whose turn it is
-        return self.currentPlayer
+        return currentPlayer
     }
     
     func updateTurn() {
@@ -58,7 +58,8 @@ class OXGame {
     
     func playMove(cellNumber: Int) -> CellType {
         // update the board based on the current player's move
-        board[cellNumber] = currentPlayer
+        board[cellNumber] = whoseTurn()
+        numTurns += 1
         updateTurn()
         return board[cellNumber]
     }
@@ -66,14 +67,14 @@ class OXGame {
     func gameWon() -> Bool {
         // return true if a player has won
         // winning cases - 123, 456, 789, 147, 258, 369, 159, 357
-        if((board[1], board[2]) == (board[2], board[3]) ||
-            (board[4], board[5]) == (board[5], board[6]) ||
-            (board[7], board[8]) == (board[8], board[9]) ||
+        if((board[0], board[1]) == (board[1], board[2]) ||
+            (board[3], board[4]) == (board[4], board[5]) ||
+            (board[6], board[7]) == (board[7], board[8]) ||
+            (board[0], board[3]) == (board[3], board[6]) ||
             (board[1], board[4]) == (board[4], board[7]) ||
             (board[2], board[5]) == (board[5], board[8]) ||
-            (board[3], board[6]) == (board[6], board[9]) ||
-            (board[1], board[5]) == (board[5], board[9]) ||
-            (board[3], board[5]) == (board[5], board[7])) {
+            (board[0], board[4]) == (board[4], board[8]) ||
+            (board[2], board[4]) == (board[4], board[6])) {
             return true
         }
         else {
