@@ -203,12 +203,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zK-da-j3H">
-                                <rect key="frame" x="15" y="20" width="34" height="20"/>
+                                <rect key="frame" x="15" y="20" width="64" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="0tV-QF-syo"/>
                                     <constraint firstAttribute="height" constant="20" id="Y2T-op-gig"/>
                                 </constraints>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="Logout">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -234,6 +235,15 @@
                     </view>
                     <connections>
                         <outlet property="boardView" destination="96A-yZ-Umb" id="c9F-R6-2ae"/>
+                        <outlet property="button1" destination="Dqb-dz-vWm" id="OAx-fM-QIo"/>
+                        <outlet property="button2" destination="RUq-lg-qiA" id="xRL-4p-zBH"/>
+                        <outlet property="button3" destination="llU-Pf-BKW" id="ycm-ae-gvk"/>
+                        <outlet property="button4" destination="jnn-95-7Go" id="B4R-xb-fqY"/>
+                        <outlet property="button5" destination="dZ6-mY-X5T" id="zon-1j-jpW"/>
+                        <outlet property="button6" destination="swM-cL-STt" id="vwC-CZ-oDD"/>
+                        <outlet property="button7" destination="Q2l-SI-er4" id="QkD-Kz-IEh"/>
+                        <outlet property="button8" destination="Iab-2G-OuS" id="smd-aa-N7G"/>
+                        <outlet property="button9" destination="hqe-AR-vqx" id="EVu-XV-aY5"/>
                         <outlet property="newGameButton" destination="kGR-rh-nn6" id="9b9-9Q-mQn"/>
                     </connections>
                 </viewController>

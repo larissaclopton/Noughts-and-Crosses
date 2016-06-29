@@ -16,26 +16,26 @@ enum CellType : String {
     
 }
 
-enum OXGameState: Int {
+enum OXGameState {
     
-    case InProgress = 0
-    case Tie = 2
-    case Won = 1
+    case InProgress
+    case Tie
+    case Won
     
 }
 
 class OXGame {
     
     // initial board of 9 empty cells
-    private var board:[CellType] = Array(count: 9, repeatedValue: CellType.Empty)
+    private var board = Array(count: 9, repeatedValue: CellType.Empty)
     
-    private var startType:CellType = CellType.X
+    private var startType = CellType.X
     
-    var numTurns:Int = 0
+    var numTurns = 0
     
     // might need to change this
     // X is the first player
-    var currentPlayer:CellType = CellType.X
+    var currentPlayer = CellType.X
     
     func turnCount() -> Int {
         // returns the number of counts in a game
@@ -69,11 +69,15 @@ class OXGame {
         // winning cases - 123, 456, 789, 147, 258, 369, 159, 357
         if((board[0] != CellType.Empty && (board[0], board[1]) == (board[1], board[2])) ||
             (board[3] != CellType.Empty && (board[3], board[4]) == (board[4], board[5])) ||
-            (board[6] != CellType.Empty && (board[6], board[7]) == (board[7], board[8])) ||
-            (board[0] != CellType.Empty && (board[0], board[3]) == (board[3], board[6])) ||
+            (board[6] != CellType.Empty && (board[6], board[7]) == (board[7], board[8]))) {
+            return true
+        }
+        else if ((board[0] != CellType.Empty && (board[0], board[3]) == (board[3], board[6])) ||
             (board[1] != CellType.Empty && (board[1], board[4]) == (board[4], board[7])) ||
-            (board[2] != CellType.Empty && (board[2], board[5]) == (board[5], board[8])) ||
-            (board[0] != CellType.Empty && (board[0], board[4]) == (board[4], board[8])) ||
+            (board[2] != CellType.Empty && (board[2], board[5]) == (board[5], board[8]))) {
+            return true
+        }
+        else if ((board[0] != CellType.Empty && (board[0], board[4]) == (board[4], board[8])) ||
             (board[2] != CellType.Empty && (board[2], board[4]) == (board[4], board[6]))) {
             return true
         }
