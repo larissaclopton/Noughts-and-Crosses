@@ -16,11 +16,11 @@ enum CellType : String {
     
 }
 
-enum OXGameState {
+enum OXGameState: Int {
     
-    case InProgress
-    case Tie
-    case Won
+    case InProgress = 0
+    case Tie = 2
+    case Won = 1
     
 }
 
@@ -67,14 +67,14 @@ class OXGame {
     func gameWon() -> Bool {
         // return true if a player has won
         // winning cases - 123, 456, 789, 147, 258, 369, 159, 357
-        if((board[0], board[1]) == (board[1], board[2]) ||
-            (board[3], board[4]) == (board[4], board[5]) ||
-            (board[6], board[7]) == (board[7], board[8]) ||
-            (board[0], board[3]) == (board[3], board[6]) ||
-            (board[1], board[4]) == (board[4], board[7]) ||
-            (board[2], board[5]) == (board[5], board[8]) ||
-            (board[0], board[4]) == (board[4], board[8]) ||
-            (board[2], board[4]) == (board[4], board[6])) {
+        if((board[0] != CellType.Empty && (board[0], board[1]) == (board[1], board[2])) ||
+            (board[3] != CellType.Empty && (board[3], board[4]) == (board[4], board[5])) ||
+            (board[6] != CellType.Empty && (board[6], board[7]) == (board[7], board[8])) ||
+            (board[0] != CellType.Empty && (board[0], board[3]) == (board[3], board[6])) ||
+            (board[1] != CellType.Empty && (board[1], board[4]) == (board[4], board[7])) ||
+            (board[2] != CellType.Empty && (board[2], board[5]) == (board[5], board[8])) ||
+            (board[0] != CellType.Empty && (board[0], board[4]) == (board[4], board[8])) ||
+            (board[2] != CellType.Empty && (board[2], board[4]) == (board[4], board[6]))) {
             return true
         }
         else {
