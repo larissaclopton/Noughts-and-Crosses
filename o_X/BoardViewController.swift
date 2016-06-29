@@ -58,7 +58,6 @@ class BoardViewController: UIViewController {
         
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
-        
         if(gameState != OXGameState.InProgress) {
             cancelGame()
         }
