@@ -26,8 +26,8 @@ enum OXGameState {
 
 class OXGame {
     
-    private var board = Array(count: 9, repeatedValue: CellType.Empty)
-    private var startType = CellType.X
+    var board = Array(count: 9, repeatedValue: CellType.Empty)
+    var startType = CellType.X
     var numTurns = 0
     
     // X is the first player
@@ -54,12 +54,10 @@ class OXGame {
     
     func playMove(cellNumber: Int) -> CellType {
         
-        
         board[cellNumber] = whoseTurn()
         
         numTurns += 1
         updateTurn()
-        
         
         return board[cellNumber]
     }

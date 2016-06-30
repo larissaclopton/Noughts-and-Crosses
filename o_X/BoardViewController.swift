@@ -52,8 +52,23 @@ class BoardViewController: UIViewController {
     
     @IBAction func cellTapped(sender: UIButton){
         
-        // play the move and set the button title
-        sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
+        // if illegal move, display an alert
+        if OXGameController.sharedInstance.getCurrentGame().board[sender.tag] != CellType.Empty {
+            
+            let illegalMoveAlert = UIAlertController(title: "Illegal Move", message: "Square already filled, please play again.", preferredStyle:UIAlertControllerStyle.Alert)
+            
+            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
+            
+            illegalMoveAlert.addAction(alertAction)
+            
+            self.presentViewController(illegalMoveAlert, animated: true, completion: nil)
+            
+            return
+        }
+        // otherwise, play move and set button title
+        else {
+            sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
+        }
         
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
@@ -63,7 +78,7 @@ class BoardViewController: UIViewController {
         
         if (gameState == OXGameState.Tie) {
             
-            let tieAlert = UIAlertController(title: "Game Over", message: "Tie", preferredStyle:UIAlertControllerStyle.Alert)
+            let tieAlert = UIAlertController(title: "Game Over", message: "It's a tie", preferredStyle:UIAlertControllerStyle.Alert)
             
             tieAlert.addAction(alertAction)
             
