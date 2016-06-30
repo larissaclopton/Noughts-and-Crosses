@@ -51,7 +51,7 @@ class UserController {
         var existingUser: User? = nil
         
         for index in 0 ..< registeredUsers.count {
-            if (email == registeredUsers[index].email && password == registeredUsers[index].email) {
+            if (email == registeredUsers[index].email && password == registeredUsers[index].password) {
                 existingUser = registeredUsers[index]
                 break
             }
