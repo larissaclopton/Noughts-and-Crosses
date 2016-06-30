@@ -17,6 +17,8 @@
 		4ED93F371D258CA500735E07 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F361D258CA400735E07 /* User.swift */; };
 		4ED93F391D258D3500735E07 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F381D258D3500735E07 /* UserController.swift */; };
 		4ED93F3B1D25A39E00735E07 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED93F3A1D25A39E00735E07 /* Onboarding.storyboard */; };
+		4ED93F3D1D25B0EC00735E07 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F3C1D25B0EC00735E07 /* RegisterViewController.swift */; };
+		4ED93F3F1D25B0FF00735E07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F3E1D25B0FF00735E07 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4ED93F361D258CA400735E07 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4ED93F381D258D3500735E07 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4ED93F3A1D25A39E00735E07 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		4ED93F3C1D25B0EC00735E07 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		4ED93F3E1D25B0FF00735E07 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				4ED93F361D258CA400735E07 /* User.swift */,
 				4ED93F381D258D3500735E07 /* UserController.swift */,
 				4ED93F3A1D25A39E00735E07 /* Onboarding.storyboard */,
+				4ED93F3C1D25B0EC00735E07 /* RegisterViewController.swift */,
+				4ED93F3E1D25B0FF00735E07 /* LoginViewController.swift */,
 				02F782CC1D22966600E3BC29 /* Assets.xcassets */,
 				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
 				02F782D11D22966600E3BC29 /* Info.plist */,
@@ -156,7 +162,9 @@
 			files = (
 				4ED93F391D258D3500735E07 /* UserController.swift in Sources */,
 				02F782C81D22966600E3BC29 /* BoardViewController.swift in Sources */,
+				4ED93F3D1D25B0EC00735E07 /* RegisterViewController.swift in Sources */,
 				4ED93ED11D23D3B100735E07 /* OXGame.swift in Sources */,
+				4ED93F3F1D25B0FF00735E07 /* LoginViewController.swift in Sources */,
 				4ED93ED91D24089000735E07 /* OXGameController.swift in Sources */,
 				4ED93F371D258CA500735E07 /* User.swift in Sources */,
 				02F782C61D22966600E3BC29 /* AppDelegate.swift in Sources */,
