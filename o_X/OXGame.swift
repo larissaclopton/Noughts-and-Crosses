@@ -44,6 +44,7 @@ class OXGame {
     }
     
     func updateTurn() {
+        // update currentPlayer to other player
         if(currentPlayer == CellType.O) {
             currentPlayer = CellType.X
         }
@@ -55,7 +56,6 @@ class OXGame {
     func playMove(cellNumber: Int) -> CellType {
         
         board[cellNumber] = whoseTurn()
-        
         numTurns += 1
         updateTurn()
         

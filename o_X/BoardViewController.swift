@@ -46,7 +46,11 @@ class BoardViewController: UIViewController {
     
     
     @IBAction func newGameButtonTapped(sender: UIButton) {
+        
+        // clear the board
         cancelGame()
+        
+        // hide the new game button
         newGameButton.hidden = true
     }
     
@@ -70,12 +74,14 @@ class BoardViewController: UIViewController {
             sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
         }
         
+        // retrieve the current game state
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
         let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
             self.newGameButton.hidden = false
         })
         
+        // display alerts for ties and wins
         if (gameState == OXGameState.Tie) {
             
             let tieAlert = UIAlertController(title: "Game Over", message: "It's a tie", preferredStyle:UIAlertControllerStyle.Alert)
@@ -101,8 +107,6 @@ class BoardViewController: UIViewController {
         print("Time to logout!")
         // what to do here?
     }
-    
-    // TODO: action for back/logout button?, using gameWon and displaying message after win, using state, what to do with OXGameState?
     
 }
 
