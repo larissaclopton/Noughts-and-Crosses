@@ -21,11 +21,10 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var button8: UIButton!
     @IBOutlet weak var button9: UIButton!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // hide the new game button
         newGameButton.hidden = true
     }
     
@@ -94,6 +93,7 @@ class BoardViewController: UIViewController {
             
         }
         else if (gameState == OXGameState.Won) {
+            
             OXGameController.sharedInstance.getCurrentGame().updateTurn()
             
             let winAlert = UIAlertController(title: "Game Over", message: "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
@@ -101,6 +101,7 @@ class BoardViewController: UIViewController {
             winAlert.addAction(alertAction)
             
             self.presentViewController(winAlert, animated: true, completion: nil)
+            
         }
         
     }

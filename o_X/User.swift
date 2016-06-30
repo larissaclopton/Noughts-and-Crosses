@@ -9,6 +9,8 @@
 import UIKit
 
 class User {
+    
     var email:String = ""
     var password:String = ""
+    
 }

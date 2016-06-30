@@ -30,6 +30,7 @@ class RegisterViewController: UIViewController {
         let registerMessage = {(user: User?, message: String?) in
             if user != nil {
                 
+                // if register succeeds, switch to the game board
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = storyboard.instantiateInitialViewController()
                 let application = UIApplication.sharedApplication()
@@ -38,6 +39,8 @@ class RegisterViewController: UIViewController {
                 
             }
             else {
+                
+                //if register fails
                 let failAlert = UIAlertController(title: "Registration failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                 
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
@@ -45,21 +48,12 @@ class RegisterViewController: UIViewController {
                 failAlert.addAction(alertAction)
             
                 self.presentViewController(failAlert, animated: true, completion: nil)
+                
             }
         }
         
         UserController.sharedInstance.register(email: emailInput.text!, password: passwordInput.text!, onCompletion: registerMessage)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

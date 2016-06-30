@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
         let loginMessage = {(user: User?, message: String?) in
             if user != nil {
                 
+                // if login succeeds, switch to game board
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = storyboard.instantiateInitialViewController()
                 let application = UIApplication.sharedApplication()
@@ -37,6 +38,8 @@ class LoginViewController: UIViewController {
                 
             }
             else {
+                
+                // if login fails
                 let failAlert = UIAlertController(title: "Login failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                 
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
@@ -44,21 +47,12 @@ class LoginViewController: UIViewController {
                 failAlert.addAction(alertAction)
                 
                 self.presentViewController(failAlert, animated: true, completion: nil)
+                
             }
         }
+        
         UserController.sharedInstance.login(email: emailInput.text!, password: passwordInput.text!, onCompletion: loginMessage)
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

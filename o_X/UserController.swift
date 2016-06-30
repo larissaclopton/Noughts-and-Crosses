@@ -22,6 +22,7 @@ class UserController {
         
         var userExists = false
         
+        // search all registered users for a matching email
         for index in 0 ..< registeredUsers.count {
             if (email == registeredUsers[index].email) {
                 userExists = true
@@ -30,26 +31,37 @@ class UserController {
         }
         
         if (userExists) {
+            
             onCompletion(nil, "Email address already exists.")
+            
         }
         else if password.characters.count < 6 {
+            
             onCompletion(nil, "Password must be at least 6 characters.")
+            
         }
         else {
+            
+            // fill in currentUser properties
             currentUser.email = email
             currentUser.password = password
-            onCompletion(currentUser, nil)
             currentlyLoggedIn = currentUser
             registeredUsers += [currentUser]
+            
+            onCompletion(currentUser, nil)
+            
             print("Number of users is \(registeredUsers.count).")
+            
         }
         
     }
     
     func login(email email: String, password: String, onCompletion: (User?, String?) -> Void) {
         
+        
         var existingUser: User? = nil
         
+        // verify that the login info matches an existing user
         for index in 0 ..< registeredUsers.count {
             if (email == registeredUsers[index].email && password == registeredUsers[index].password) {
                 existingUser = registeredUsers[index]
@@ -58,11 +70,15 @@ class UserController {
         }
         
         if existingUser != nil {
+            
             onCompletion(existingUser, nil)
             currentlyLoggedIn = currentUser
+            
         }
         else {
-            onCompletion(nil, "Username or password is incorrect")
+            
+            onCompletion(nil, "Username or password is incorrect.")
+            
         }
         
     }
