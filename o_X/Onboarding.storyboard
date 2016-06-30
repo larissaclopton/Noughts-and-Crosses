@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="oc8-k5-pN5">
             <objects>
-                <viewController id="ghZ-il-MK0" sceneMemberID="viewController">
+                <viewController id="ghZ-il-MK0" customClass="RegisterViewController" customModule="o_X" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XDL-JD-J1q"/>
                         <viewControllerLayoutGuide type="bottom" id="ICV-sE-YJ7"/>
@@ -29,6 +29,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="ghZ-il-MK0" eventType="touchUpInside" id="l2Z-0E-wEU"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X06-CB-bth" userLabel="Background">
                                 <rect key="frame" x="0.0" y="41" width="600" height="529"/>
@@ -76,6 +79,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xee-ch-p3X"/>
+                    <connections>
+                        <outlet property="emailInput" destination="wcI-cl-qtA" id="yxa-TZ-oAi"/>
+                        <outlet property="passwordInput" destination="jxs-Dj-Ljn" id="Llb-pM-SAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkt-cv-hV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="-225" y="456"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="dYG-84-XUt">
             <objects>
-                <viewController id="Kc4-5t-nfA" sceneMemberID="viewController">
+                <viewController id="Kc4-5t-nfA" customClass="LoginViewController" customModule="o_X" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aau-PW-jSl"/>
                         <viewControllerLayoutGuide type="bottom" id="Mk1-Xm-pI2"/>
@@ -169,6 +176,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="Kc4-5t-nfA" eventType="touchUpInside" id="9Pv-SI-pBk"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1m6-5r-Bon">
                                 <rect key="frame" x="0.0" y="41" width="600" height="529"/>

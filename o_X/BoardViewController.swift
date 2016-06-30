@@ -21,6 +21,8 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var button8: UIButton!
     @IBOutlet weak var button9: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +63,7 @@ class BoardViewController: UIViewController {
             
             let illegalMoveAlert = UIAlertController(title: "Illegal Move", message: "Square already filled, please play again.", preferredStyle:UIAlertControllerStyle.Alert)
             
-            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
+            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             
             illegalMoveAlert.addAction(alertAction)
             
@@ -104,8 +106,11 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func logoutTapped(sender: UIButton) {
-        print("Time to logout!")
-        // what to do here?
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()
+        let application = UIApplication.sharedApplication()
+        let window = application.keyWindow
+        window?.rootViewController = viewController
     }
     
 }

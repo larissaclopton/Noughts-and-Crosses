@@ -9,7 +9,11 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
+    
+    @IBOutlet weak var emailInput: UITextField!
+    
+    @IBOutlet weak var passwordInput: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,32 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func registerButtonTapped(sender: UIButton) {
+        
+        let registerMessage = {(user: User?, message: String?) in
+            if user != nil {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateInitialViewController()
+                let application = UIApplication.sharedApplication()
+                let window = application.keyWindow
+                window?.rootViewController = viewController
+                
+            }
+            else {
+                let failAlert = UIAlertController(title: "Registration failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
+                
+                failAlert.addAction(alertAction)
+            
+                self.presentViewController(failAlert, animated: true, completion: nil)
+            }
+        }
+        
+        UserController.sharedInstance.register(email: emailInput.text!, password: passwordInput.text!, onCompletion: registerMessage)
+        
+    }
 
     /*
     // MARK: - Navigation

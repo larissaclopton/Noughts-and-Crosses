@@ -21,6 +21,31 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginButtonTapped(sender: UIButton) {
+        
+        let loginMessage = {(user: User?, message: String?) in
+            if user != nil {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateInitialViewController()
+                let application = UIApplication.sharedApplication()
+                let window = application.keyWindow
+                window?.rootViewController = viewController
+                
+            }
+            else {
+                let failAlert = UIAlertController(title: "Registration failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
+                
+                failAlert.addAction(alertAction)
+                
+                self.presentViewController(failAlert, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
 
     /*
     // MARK: - Navigation

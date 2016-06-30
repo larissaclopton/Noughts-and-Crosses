@@ -40,12 +40,33 @@ class UserController {
             currentUser.password = password
             onCompletion(currentUser, nil)
             currentlyLoggedIn = currentUser
+            registeredUsers += [currentUser]
+            print("Number of users is \(registeredUsers.count)")
         }
+        
+        
         
     }
     
     func login(email email: String, password: String, onCompletion: (User?, String?) -> Void) {
-        currentlyLoggedIn = currentUser
+        
+        var existingUser: User? = nil
+        
+        for index in 0 ..< registeredUsers.count {
+            if (email == registeredUsers[index].email && password == registeredUsers[index].email) {
+                existingUser = registeredUsers[index]
+                break
+            }
+        }
+        
+        if existingUser != nil {
+            onCompletion(existingUser, nil)
+            currentlyLoggedIn = currentUser
+        }
+        else {
+            onCompletion(nil, "Username or password is incorrect")
+        }
+        
     }
     
     func logout(onCompletion onCompletion: (String?) -> Void) {
