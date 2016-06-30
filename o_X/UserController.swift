@@ -41,10 +41,8 @@ class UserController {
             onCompletion(currentUser, nil)
             currentlyLoggedIn = currentUser
             registeredUsers += [currentUser]
-            print("Number of users is \(registeredUsers.count)")
+            print("Number of users is \(registeredUsers.count).")
         }
-        
-        
         
     }
     

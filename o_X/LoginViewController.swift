@@ -9,7 +9,10 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var emailInput: UITextField!
+    @IBOutlet weak var passwordInput: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +37,7 @@ class LoginViewController: UIViewController {
                 
             }
             else {
-                let failAlert = UIAlertController(title: "Registration failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                let failAlert = UIAlertController(title: "Login failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
                 
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
                 
@@ -43,6 +46,7 @@ class LoginViewController: UIViewController {
                 self.presentViewController(failAlert, animated: true, completion: nil)
             }
         }
+        UserController.sharedInstance.login(email: emailInput.text!, password: passwordInput.text!, onCompletion: loginMessage)
         
     }
     
