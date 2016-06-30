@@ -10,10 +10,7 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var boardView: UIView!
-    
-    @IBOutlet weak var gameStateMessage: UILabel!
-    
-    
+
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -27,7 +24,7 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+        newGameButton.hidden = true
     }
     
     func cancelGame() {
@@ -47,13 +44,10 @@ class BoardViewController: UIViewController {
         button9.setTitle("", forState: UIControlState.Normal)
     }
     
-    func clearMessage() {
-        gameStateMessage.text = ""
-    }
     
     @IBAction func newGameButtonTapped(sender: UIButton) {
         cancelGame()
-        clearMessage()
+        newGameButton.hidden = true
     }
     
     @IBAction func cellTapped(sender: UIButton){
@@ -63,15 +57,27 @@ class BoardViewController: UIViewController {
         
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
-        if (gameState == OXGameState.InProgress) {
-            return
+        let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
+            self.newGameButton.hidden = false
+        })
+        
+        if (gameState == OXGameState.Tie) {
+            
+            let tieAlert = UIAlertController(title: "Game Over", message: "Tie", preferredStyle:UIAlertControllerStyle.Alert)
+            
+            tieAlert.addAction(alertAction)
+            
+            self.presentViewController(tieAlert, animated: true, completion: nil)
+            
         }
-        else if (gameState == OXGameState.Tie) {
-            gameStateMessage.text = "It's a tie!"
-        }
-        else {
+        else if (gameState == OXGameState.Won) {
             OXGameController.sharedInstance.getCurrentGame().updateTurn()
-            gameStateMessage.text = "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won!"
+            
+            let winAlert = UIAlertController(title: "Game Over", message: "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
+            
+            winAlert.addAction(alertAction)
+            
+            self.presentViewController(winAlert, animated: true, completion: nil)
         }
         
     }
