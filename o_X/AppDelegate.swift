@@ -11,7 +11,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        // bring the current user directly to the board
+        let registerMessage = {(user: User?, message: String?) in
+            if user != nil {
+                
+                // if register succeeds, switch to the game board
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateInitialViewController()
+                let window = self.window
+                window?.rootViewController = viewController
+                
+            }
+        }
+        
+        // if there is a current user, automatically register them
+        if let email:String = defaults.stringForKey("currentUserEmail") as String!, password:String = defaults.stringForKey("currentUserPassword") as String! {
+            
+            UserController.sharedInstance.register(email: email, password: password, onCompletion: registerMessage)
+            
+            print("username \(email) with password \(password) is logged in")
+        }
+        
         return true
     }
 
