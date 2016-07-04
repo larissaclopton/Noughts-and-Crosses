@@ -18,11 +18,6 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func loginButtonTapped(sender: UIButton) {
         
@@ -36,6 +31,7 @@ class LoginViewController: UIViewController {
                 let window = application.keyWindow
                 window?.rootViewController = viewController
                 
+                //OXGameController.sharedInstance.getCurrentGame().host
             }
             else {
                 

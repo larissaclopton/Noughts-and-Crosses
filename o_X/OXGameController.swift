@@ -24,4 +24,16 @@ class OXGameController {
     func playMove(cellNumber: Int) -> CellType {
         return currentGame.playMove(cellNumber)
     }
+    
+    func getGames(onCompletion onCompletion: ([OXGame]?, String?) -> Void) {
+        
+        let gameOne = OXGame()
+        let gameTwo = OXGame()
+        let gameThree = OXGame()
+        
+        // this will be updated for internet play
+        onCompletion([gameOne, gameTwo, gameThree], nil)
+        
+    }
+
 }

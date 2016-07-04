@@ -12,6 +12,7 @@
 		02F782CB1D22966600E3BC29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782C91D22966600E3BC29 /* Main.storyboard */; settings = {ASSET_TAGS = (buttonOne, ); }; };
 		02F782CD1D22966600E3BC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CC1D22966600E3BC29 /* Assets.xcassets */; };
 		02F782D01D22966600E3BC29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */; };
+		4ECADC701D2A6F0400CBC606 /* NetworkGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */; };
 		4ED93ED11D23D3B100735E07 /* OXGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93ED01D23D3B100735E07 /* OXGame.swift */; };
 		4ED93ED91D24089000735E07 /* OXGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93ED81D24089000735E07 /* OXGameController.swift */; };
 		4ED93F371D258CA500735E07 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F361D258CA400735E07 /* User.swift */; };
@@ -29,6 +30,7 @@
 		02F782CC1D22966600E3BC29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02F782CF1D22966600E3BC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02F782D11D22966600E3BC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkGamesTableViewController.swift; sourceTree = "<group>"; };
 		4ED93ED01D23D3B100735E07 /* OXGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGame.swift; sourceTree = "<group>"; };
 		4ED93ED81D24089000735E07 /* OXGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGameController.swift; sourceTree = "<group>"; };
 		4ED93F361D258CA400735E07 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				02F782C51D22966600E3BC29 /* AppDelegate.swift */,
 				02F782C71D22966600E3BC29 /* BoardViewController.swift */,
 				02F782C91D22966600E3BC29 /* Main.storyboard */,
+				4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */,
 				4ED93ED01D23D3B100735E07 /* OXGame.swift */,
 				4ED93F361D258CA400735E07 /* User.swift */,
 				4ED93F381D258D3500735E07 /* UserController.swift */,
@@ -165,6 +168,7 @@
 				4ED93F3D1D25B0EC00735E07 /* RegisterViewController.swift in Sources */,
 				4ED93ED11D23D3B100735E07 /* OXGame.swift in Sources */,
 				4ED93F3F1D25B0FF00735E07 /* LoginViewController.swift in Sources */,
+				4ECADC701D2A6F0400CBC606 /* NetworkGamesTableViewController.swift in Sources */,
 				4ED93ED91D24089000735E07 /* OXGameController.swift in Sources */,
 				4ED93F371D258CA500735E07 /* User.swift in Sources */,
 				02F782C61D22966600E3BC29 /* AppDelegate.swift in Sources */,

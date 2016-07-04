@@ -21,10 +21,15 @@ enum OXGameState {
     case InProgress
     case Tie
     case Won
+    case Open
+    case Abandoned
     
 }
 
-class OXGame {
+class OXGame: NSObject {
+    
+    var ID: Int = 436030
+    var host: String = "Anyone"
     
     var board = Array(count: 9, repeatedValue: CellType.Empty)
     var startType = CellType.X
@@ -32,6 +37,59 @@ class OXGame {
     
     // X is the first player
     var currentPlayer = CellType.X
+    
+    override init()  {
+        super.init()
+        //we are simulating setting our board from the internet
+        let simulatedBoardStringFromNetwork = "_________" //update this string to different values to test your model serialisation
+        self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
+        if(simulatedBoardStringFromNetwork == serialiseBoard()) {
+            print("string matches serialised board")
+        }
+        else  {
+           print("string does not match serialised board")
+        }
+        
+    }
+    
+    private func deserialiseBoard(boardString: String) -> [CellType] {
+        
+        var tempBoard = [CellType]()
+        
+        for item in boardString.characters {
+            if (item == "x") {
+                tempBoard += [CellType.X]
+            }
+            else if (item == "o") {
+                tempBoard += [CellType.O]
+            }
+            else {
+                tempBoard += [CellType.Empty]
+            }
+        }
+        
+        return tempBoard
+        
+    }
+    
+    private func serialiseBoard() -> String {
+        
+        var boardString = ""
+        
+        for type in self.board {
+            if (type == CellType.X) {
+                boardString += "x"
+            }
+            else if (type == CellType.O) {
+                boardString += "o"
+            }
+            else {
+                boardString += "_"
+            }
+        }
+        
+        return boardString
+    }
     
     func turnCount() -> Int {
         // returns the number of counts in a game

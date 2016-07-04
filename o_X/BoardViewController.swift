@@ -7,6 +7,8 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
+    var networkMode: Bool = false
+    
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var boardView: UIView!
@@ -19,13 +21,22 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
-    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var button9:
+        UIButton!
+    
+    
+    @IBOutlet weak var gameStateMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // hide the new game button
+        if networkMode == false {
         newGameButton.hidden = true
+        }
+        
+        // setup the board
+        updateUI()
     }
     
     func cancelGame() {
@@ -79,7 +90,9 @@ class BoardViewController: UIViewController {
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
         let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
-            self.newGameButton.hidden = false
+            if self.networkMode == false {
+                self.newGameButton.hidden = false
+            }
         })
         
         // display alerts for ties and wins
@@ -108,11 +121,33 @@ class BoardViewController: UIViewController {
     
     @IBAction func logoutTapped(sender: UIButton) {
         
+        let logoutMessage = {(message: String?) in
+            
+        }
+        
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()
         let application = UIApplication.sharedApplication()
         let window = application.keyWindow
         window?.rootViewController = viewController
+
+        UserController.sharedInstance.logout(onCompletion: logoutMessage)
+        
+    }
+    
+    func updateUI() {
+        
+        let game = OXGameController.sharedInstance.getCurrentGame()
+        
+        button1.setTitle(game.board[0].rawValue, forState: UIControlState.Normal)
+        button2.setTitle(game.board[1].rawValue, forState: UIControlState.Normal)
+        button3.setTitle(game.board[2].rawValue, forState: UIControlState.Normal)
+        button4.setTitle(game.board[3].rawValue, forState: UIControlState.Normal)
+        button5.setTitle(game.board[4].rawValue, forState: UIControlState.Normal)
+        button6.setTitle(game.board[5].rawValue, forState: UIControlState.Normal)
+        button7.setTitle(game.board[6].rawValue, forState: UIControlState.Normal)
+        button8.setTitle(game.board[7].rawValue, forState: UIControlState.Normal)
+        button9.setTitle(game.board[8].rawValue, forState: UIControlState.Normal)
         
     }
     
