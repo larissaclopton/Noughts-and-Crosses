@@ -31,14 +31,23 @@ class NetworkGamesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // todo - need to change
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // todo - need to change
         return 5
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "newGame" {
+            
+            if let boardViewController = segue.destinationViewController as? BoardViewController {
+                boardViewController.networkMode = true
+            }
+        }
     }
     
     @IBAction func backButtonTapped(sender: AnyObject) {
@@ -57,12 +66,10 @@ class NetworkGamesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-        print("game has been chosen")
+        
+        performSegueWithIdentifier("newGame", sender: self)
         
     }
-
-
 
     /*
     // Override to support conditional editing of the table view.

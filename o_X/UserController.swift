@@ -103,7 +103,6 @@ class UserController {
         defaults.removeObjectForKey("currentUserEmail")
         defaults.removeObjectForKey("currentUserPassword")
         defaults.synchronize()
-        print("person logged out")
     
         currentlyLoggedIn = nil
         

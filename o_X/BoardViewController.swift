@@ -7,6 +7,8 @@ import UIKit
 
 class BoardViewController: UIViewController {
     
+    var networkMode: Bool = false
+    
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var boardView: UIView!
@@ -19,13 +21,19 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
-    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var button9:
+        UIButton!
+    
+    
+    @IBOutlet weak var gameStateMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // hide the new game button
+        if networkMode == false {
         newGameButton.hidden = true
+        }
         
         // setup the board
         updateUI()
@@ -82,7 +90,9 @@ class BoardViewController: UIViewController {
         let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
         let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
-            self.newGameButton.hidden = false
+            if self.networkMode == false {
+                self.newGameButton.hidden = false
+            }
         })
         
         // display alerts for ties and wins

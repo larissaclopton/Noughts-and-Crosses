@@ -21,6 +21,8 @@ enum OXGameState {
     case InProgress
     case Tie
     case Won
+    case Open
+    case Abandoned
     
 }
 
@@ -39,7 +41,7 @@ class OXGame: NSObject {
     override init()  {
         super.init()
         //we are simulating setting our board from the internet
-        let simulatedBoardStringFromNetwork = "xo_x_o__x" //update this string to different values to test your model serialisation
+        let simulatedBoardStringFromNetwork = "_________" //update this string to different values to test your model serialisation
         self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
         if(simulatedBoardStringFromNetwork == serialiseBoard()) {
             print("string matches serialised board")
