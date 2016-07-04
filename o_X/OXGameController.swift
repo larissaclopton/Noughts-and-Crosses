@@ -13,9 +13,6 @@ class OXGameController {
     static var sharedInstance = OXGameController()
     private var currentGame = OXGame()
     
-    // this will be replaced with internet play
-    var dummyGameArray: [OXGame] = [OXGameController.sharedInstance.getCurrentGame()]
-    
     func getCurrentGame() -> OXGame {
         return currentGame
     }
@@ -30,8 +27,12 @@ class OXGameController {
     
     func getGames(onCompletion onCompletion: ([OXGame]?, String?) -> Void) {
         
+        let gameOne = OXGame()
+        let gameTwo = OXGame()
+        let gameThree = OXGame()
+        
         // this will be updated for internet play
-        onCompletion(dummyGameArray, "")
+        onCompletion([gameOne, gameTwo, gameThree], nil)
         
     }
 

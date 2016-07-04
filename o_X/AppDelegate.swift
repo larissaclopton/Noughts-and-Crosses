@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.rootViewController = viewController
                 
             }
+            else {
+                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                let viewController = storyboard.instantiateInitialViewController()
+                let window = self.window
+                window?.rootViewController = viewController
+            }
         }
         
         // if there is a current user, automatically register them
@@ -32,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             UserController.sharedInstance.register(email: email, password: password, onCompletion: registerMessage)
             
-            print("username \(email) with password \(password) is logged in")
         }
         
         return true

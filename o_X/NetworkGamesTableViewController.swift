@@ -10,7 +10,7 @@ import UIKit
 
 class NetworkGamesTableViewController: UITableViewController {
 
-    var dummyGameArray = OXGameController.sharedInstance.dummyGameArray
+    var dummyGameArray = [OXGame]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class NetworkGamesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +37,7 @@ class NetworkGamesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dummyGameArray.count
+        return 5
         
     }
     
@@ -49,11 +50,18 @@ class NetworkGamesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("GameInfo", forIndexPath: indexPath)
 
-        cell.textLabel?.text = String(dummyGameArray[indexPath.row].host) + "\n" + String(dummyGameArray[indexPath.row].ID)
+        cell.textLabel?.text = "this is a game"
     
         return cell
         
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+        print("game has been chosen")
+        
+    }
+
 
 
     /*

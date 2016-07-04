@@ -108,11 +108,17 @@ class BoardViewController: UIViewController {
     
     @IBAction func logoutTapped(sender: UIButton) {
         
+        let logoutMessage = {(message: String?) in
+            
+        }
+        
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()
         let application = UIApplication.sharedApplication()
         let window = application.keyWindow
         window?.rootViewController = viewController
+
+        UserController.sharedInstance.logout(onCompletion: logoutMessage)
         
     }
     

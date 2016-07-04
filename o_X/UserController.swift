@@ -50,17 +50,11 @@ class UserController {
             
             onCompletion(currentUser, nil)
             
-            print("Number of users is \(registeredUsers.count).")
-            
             // set currentUserEmail and currentUserPassword
             let defaults = NSUserDefaults.standardUserDefaults()
             
             defaults.setObject(currentlyLoggedIn!.email, forKey: "currentUserEmail")
             defaults.setObject(currentlyLoggedIn!.password, forKey: "currentUserPassword")
-            
-            print("\(currentlyLoggedIn!.email) set")
-            print("\(currentlyLoggedIn!.password) set")
-            
             defaults.synchronize()
             
             
@@ -91,10 +85,6 @@ class UserController {
             
             defaults.setObject(currentlyLoggedIn!.email, forKey: "currentUserEmail")
             defaults.setObject(currentlyLoggedIn!.password, forKey: "currentUserPassword")
-            
-            print("\(currentlyLoggedIn!.email) set")
-            print("\(currentlyLoggedIn!.password) set")
-            
             defaults.synchronize()
             
         }
@@ -108,23 +98,16 @@ class UserController {
     
     func logout(onCompletion onCompletion: (String?) -> Void) {
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+    
+        defaults.removeObjectForKey("currentUserEmail")
+        defaults.removeObjectForKey("currentUserPassword")
+        defaults.synchronize()
+        print("person logged out")
+    
         currentlyLoggedIn = nil
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if let currentUserEmail:String = defaults.objectForKey("currentUserEmail") as? String {
-            defaults.removeObjectForKey("currentUserEmail")
-            defaults.synchronize()
-            print("\(currentUserEmail) removed")
-        }
-        
-        if let currentUserPassword:String = defaults.objectForKey("currentUserPassword") as? String {
-            defaults.removeObjectForKey("currentUserPassword")
-            defaults.synchronize()
-            print("\(currentUserPassword) removed")
-
-            
-        }
+        onCompletion("logged out")
 
     }
 
