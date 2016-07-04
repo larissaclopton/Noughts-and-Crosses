@@ -10,6 +10,8 @@ import UIKit
 
 class NetworkGamesTableViewController: UITableViewController {
 
+    var dummyGameArray = OXGameController.sharedInstance.dummyGameArray
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +31,13 @@ class NetworkGamesTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dummyGameArray.count
+        
     }
     
     @IBAction func backButtonTapped(sender: AnyObject) {
@@ -42,15 +45,16 @@ class NetworkGamesTableViewController: UITableViewController {
     }
     
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameInfo", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        cell.textLabel?.text = String(dummyGameArray[indexPath.row].host) + "\n" + String(dummyGameArray[indexPath.row].ID)
+    
         return cell
+        
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

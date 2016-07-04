@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
                 let window = application.keyWindow
                 window?.rootViewController = viewController
                 
+                //OXGameController.sharedInstance.getCurrentGame().host
             }
             else {
                 

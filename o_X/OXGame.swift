@@ -26,6 +26,9 @@ enum OXGameState {
 
 class OXGame {
     
+    var ID: Int = 436030
+    var host: String = "Anyone"
+    
     var board = Array(count: 9, repeatedValue: CellType.Empty)
     var startType = CellType.X
     var numTurns = 0
