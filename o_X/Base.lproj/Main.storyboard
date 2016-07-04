@@ -204,12 +204,23 @@
                                             <action selector="cellTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ux-9T-XEK"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM7-ne-Aaa">
+                                        <rect key="frame" x="0.0" y="497" width="600" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Network Play">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qOb-cO-OMI" kind="modal" id="UK8-8d-5IB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TIQ-69-p9M" firstAttribute="top" secondItem="Dqb-dz-vWm" secondAttribute="bottom" id="2lh-CW-CBg"/>
                                     <constraint firstItem="Iab-2G-OuS" firstAttribute="leading" secondItem="ZUg-2e-G9P" secondAttribute="trailing" id="4ab-Vb-ftY"/>
                                     <constraint firstItem="ZUg-2e-G9P" firstAttribute="centerY" secondItem="96A-yZ-Umb" secondAttribute="centerY" id="8XH-WW-B9M"/>
+                                    <constraint firstItem="FM7-ne-Aaa" firstAttribute="leading" secondItem="96A-yZ-Umb" secondAttribute="leading" id="99J-oV-d5L"/>
                                     <constraint firstItem="dZ6-mY-X5T" firstAttribute="centerY" secondItem="96A-yZ-Umb" secondAttribute="centerY" id="9na-kg-iYu"/>
                                     <constraint firstItem="UNF-xA-Xig" firstAttribute="leading" secondItem="dZ6-mY-X5T" secondAttribute="trailing" id="Do5-5M-84P"/>
                                     <constraint firstItem="Q2l-SI-er4" firstAttribute="top" secondItem="yIO-4g-QbB" secondAttribute="bottom" id="EHf-yN-cze"/>
@@ -218,10 +229,12 @@
                                     <constraint firstItem="swM-cL-STt" firstAttribute="top" secondItem="TIQ-69-p9M" secondAttribute="bottom" id="HV4-Z2-jUc"/>
                                     <constraint firstItem="yIO-4g-QbB" firstAttribute="centerX" secondItem="96A-yZ-Umb" secondAttribute="centerX" id="JJb-aZ-1iK"/>
                                     <constraint firstItem="RUq-lg-qiA" firstAttribute="leading" secondItem="ZUg-2e-G9P" secondAttribute="trailing" id="Mcw-Yy-lM6"/>
+                                    <constraint firstItem="FM7-ne-Aaa" firstAttribute="centerX" secondItem="96A-yZ-Umb" secondAttribute="centerX" id="OP3-RO-nRg"/>
                                     <constraint firstItem="TIQ-69-p9M" firstAttribute="top" secondItem="RUq-lg-qiA" secondAttribute="bottom" id="Snw-Or-kfg"/>
                                     <constraint firstItem="dZ6-mY-X5T" firstAttribute="top" secondItem="TIQ-69-p9M" secondAttribute="bottom" id="Spm-cZ-PbN"/>
                                     <constraint firstItem="ZUg-2e-G9P" firstAttribute="leading" secondItem="Q2l-SI-er4" secondAttribute="trailing" id="Udd-wJ-3NJ"/>
                                     <constraint firstItem="UNF-xA-Xig" firstAttribute="centerY" secondItem="96A-yZ-Umb" secondAttribute="centerY" id="VrA-5l-cy6"/>
+                                    <constraint firstAttribute="trailing" secondItem="FM7-ne-Aaa" secondAttribute="trailing" id="b4o-0L-krq"/>
                                     <constraint firstItem="llU-Pf-BKW" firstAttribute="leading" secondItem="UNF-xA-Xig" secondAttribute="trailing" id="cqY-XY-XID"/>
                                     <constraint firstItem="hqe-AR-vqx" firstAttribute="leading" secondItem="UNF-xA-Xig" secondAttribute="trailing" id="dK8-04-ILH"/>
                                     <constraint firstItem="jnn-95-7Go" firstAttribute="top" secondItem="TIQ-69-p9M" secondAttribute="bottom" id="e6e-eM-1Hl"/>
@@ -231,6 +244,7 @@
                                     <constraint firstItem="hqe-AR-vqx" firstAttribute="top" secondItem="yIO-4g-QbB" secondAttribute="bottom" id="hqN-Vc-CwS"/>
                                     <constraint firstItem="dZ6-mY-X5T" firstAttribute="centerX" secondItem="96A-yZ-Umb" secondAttribute="centerX" id="l0Y-Ra-7Kr"/>
                                     <constraint firstItem="ZUg-2e-G9P" firstAttribute="leading" secondItem="Dqb-dz-vWm" secondAttribute="trailing" id="mCe-iX-N4p"/>
+                                    <constraint firstAttribute="bottom" secondItem="FM7-ne-Aaa" secondAttribute="bottom" constant="2" id="oUS-JL-acA"/>
                                     <constraint firstItem="UNF-xA-Xig" firstAttribute="leading" secondItem="Iab-2G-OuS" secondAttribute="trailing" id="qGM-ip-YKz"/>
                                     <constraint firstItem="UNF-xA-Xig" firstAttribute="leading" secondItem="RUq-lg-qiA" secondAttribute="trailing" id="sRN-gn-wg4"/>
                                     <constraint firstItem="TIQ-69-p9M" firstAttribute="top" secondItem="llU-Pf-BKW" secondAttribute="bottom" id="stb-H3-NgM"/>
@@ -286,7 +300,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="137"/>
+            <point key="canvasLocation" x="-710" y="-85"/>
+        </scene>
+        <!--Available Games-->
+        <scene sceneID="gwm-OR-1uR">
+            <objects>
+                <tableViewController id="xpe-3z-3ti" customClass="NetworkGamesTableViewController" customModule="o_X" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="get-Kn-Jz1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HCc-Oj-6qG">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HCc-Oj-6qG" id="0GY-UW-eoW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xpe-3z-3ti" id="td7-TW-aU5"/>
+                            <outlet property="delegate" destination="xpe-3z-3ti" id="6Le-Lr-AIk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Available Games" id="AC1-aD-KDP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="NgS-Kc-pTo">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="xpe-3z-3ti" id="id8-QT-gPX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ee4-Zo-6kP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="664" y="-160"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DKE-ue-wJd">
+            <objects>
+                <navigationController id="qOb-cO-OMI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1kQ-l6-cVd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xpe-3z-3ti" kind="relationship" relationship="rootViewController" id="sT6-0q-1ht"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLE-qU-f5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="-112"/>
         </scene>
     </scenes>
 </document>

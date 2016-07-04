@@ -46,8 +46,9 @@ class RegisterViewController: UIViewController {
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
                 
                 failAlert.addAction(alertAction)
-            
+                
                 self.presentViewController(failAlert, animated: true, completion: nil)
+
                 
             }
         }
