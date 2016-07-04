@@ -41,16 +41,11 @@ class OXGame: NSObject {
         //we are simulating setting our board from the internet
         let simulatedBoardStringFromNetwork = "xo_x_o__x" //update this string to different values to test your model serialisation
         self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
-        if(simulatedBoardStringFromNetwork == serialiseBoard())    {
-            print("start\n------------------------------------")
-            print("congratulations, you successfully deserialised your board and serialized it again correctly. You can send your data model over the internet with this code. 1 step closer to network OX ;)")
-            
-            print("done\n------------------------------------")
-        }   else    {
-            print("start\n------------------------------------")
-            print ("your board deserialisation and serialization was not correct :( carry on coding on those functions")
-            
-            print("done\n------------------------------------")
+        if(simulatedBoardStringFromNetwork == serialiseBoard()) {
+            print("string matches serialised board")
+        }
+        else  {
+           print("string does not match serialised board")
         }
         
     }

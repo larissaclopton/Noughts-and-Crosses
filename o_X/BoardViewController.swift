@@ -26,6 +26,9 @@ class BoardViewController: UIViewController {
         
         // hide the new game button
         newGameButton.hidden = true
+        
+        // setup the board
+        updateUI()
     }
     
     func cancelGame() {
@@ -119,6 +122,22 @@ class BoardViewController: UIViewController {
         window?.rootViewController = viewController
 
         UserController.sharedInstance.logout(onCompletion: logoutMessage)
+        
+    }
+    
+    func updateUI() {
+        
+        let game = OXGameController.sharedInstance.getCurrentGame()
+        
+        button1.setTitle(game.board[0].rawValue, forState: UIControlState.Normal)
+        button2.setTitle(game.board[1].rawValue, forState: UIControlState.Normal)
+        button3.setTitle(game.board[2].rawValue, forState: UIControlState.Normal)
+        button4.setTitle(game.board[3].rawValue, forState: UIControlState.Normal)
+        button5.setTitle(game.board[4].rawValue, forState: UIControlState.Normal)
+        button6.setTitle(game.board[5].rawValue, forState: UIControlState.Normal)
+        button7.setTitle(game.board[6].rawValue, forState: UIControlState.Normal)
+        button8.setTitle(game.board[7].rawValue, forState: UIControlState.Normal)
+        button9.setTitle(game.board[8].rawValue, forState: UIControlState.Normal)
         
     }
     
