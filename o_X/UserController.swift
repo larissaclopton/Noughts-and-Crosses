@@ -12,7 +12,7 @@ class UserController: WebService {
     
     static var sharedInstance = UserController()
     
-    var currentUser = User(token: "", client: "")
+    var currentUser = User(email: "", password: "", token: "", client: "")
     
     var registeredUsers: [User] = []
     
@@ -38,15 +38,15 @@ class UserController: WebService {
             //json is the response data received
             
             print(json)
-            var user:User = User(token: "", client:"")
+            var user:User = User(email: email, password: password, token: "", client:"")
+            user.email = email
+            user.password = "not_saved"
             
             if (responseCode/100 == 2)   { //if the responseCode is 2xx (any responseCode in the 200's range is a success case. For example, some servers return 201 for successful object creation)
                 
                 //successfully registered user. get the obtained data from the json response data and create the user object to give back to the calling ViewController
                 
-                user.email = json["data"]["email"].stringValue
-                user.password = "not_given_and_not_stored"
-                user = User(token:json["data"]["token"].stringValue, client:json["data"]["client"].stringValue)
+                user = User(email: json["data"]["email"].stringValue,password:"not_given_and_not_stored", token:json["data"]["token"].stringValue, client:json["data"]["client"].stringValue)
                 
                 //while we are at it, lets persist our user
                 //and while we still at it, lets set the user as logged in. This is good programming as we are keeping all the user management inside the UserController and handling it at the right time
@@ -75,6 +75,8 @@ class UserController: WebService {
         
         //we are now done with the registerUser function. Note that this function doesnt return anything. But because of the viewControllerCompletionFunction closure we are given as an input parameter, we can set in motion a function in the calling class when it is needed.
     
+        // previous implementation
+        
         /*var userExists = false
         
         // search all registered users for a matching email
@@ -131,14 +133,13 @@ class UserController: WebService {
         self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
         
             print(json)
-            var user:User = User(token: "", client:"")
+            var user:User = User(email:email,password: password, token: "", client: "")
+            user.email = email
+            user.password = "not_saved"
             
             if (responseCode/100 == 2)   {
             
-                
-                user.email = json["data"]["email"].stringValue
-                user.password = "not_given_and_not_stored"
-                user = User(token:json["data"]["token"].stringValue, client:json["data"]["client"].stringValue)
+               user = User(email: json["data"]["email"].stringValue,password:"not_given_and_not_stored", token:json["data"]["token"].stringValue, client:json["data"]["client"].stringValue)
             
                 self.currentlyLoggedIn = user
                 
@@ -156,6 +157,8 @@ class UserController: WebService {
                 onCompletion(nil,errorMessage)
             }
         })
+        
+        // previous implementation
         
         /*var existingUser: User? = nil
         

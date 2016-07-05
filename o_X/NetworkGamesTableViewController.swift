@@ -9,12 +9,31 @@
 import UIKit
 
 class NetworkGamesTableViewController: UITableViewController {
+    
+    var gameList: [OXGame] = []
 
-    var dummyGameArray = [OXGame]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        OXGameController.sharedInstance.getGames(onCompletion: {(games: [OXGame]?, message: String?) in
+            
+            
+            if let game = games{
+                
+                
+                self.gameList = game
+                self.tableView.reloadData()
+            } else {
+                
+                print(message)
+                
+            }
+           
+        }
+    )
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,7 +56,7 @@ class NetworkGamesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // todo - need to change
-        return 5
+        return gameList.count
         
     }
     
@@ -58,8 +77,11 @@ class NetworkGamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("GameInfo", forIndexPath: indexPath)
-
-        cell.textLabel?.text = "this is a game"
+//        
+//        let id = gameList[indexPath].ID
+//        let host = gameList[indexPath].host
+//        
+        cell.textLabel?.text = " Game \(gameList[indexPath.row].ID) @ \(gameList[indexPath.row].host)"
     
         return cell
         

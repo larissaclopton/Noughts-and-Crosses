@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OXGameController {
+class OXGameController: WebService {
     
     static var sharedInstance = OXGameController()
     private var currentGame = OXGame()
@@ -27,12 +27,34 @@ class OXGameController {
     
     func getGames(onCompletion onCompletion: ([OXGame]?, String?) -> Void) {
         
-        let gameOne = OXGame()
-        let gameTwo = OXGame()
-        let gameThree = OXGame()
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games"), method: "GET", parameters: nil)
         
-        // this will be updated for internet play
-        onCompletion([gameOne, gameTwo, gameThree], nil)
+        executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            if (responseCode/100 == 2)   {
+            
+                var list:[OXGame] = []
+                
+                for game in json.arrayValue {
+                    
+                    let g = OXGame()
+                    g.ID = game["id"].intValue
+                    g.host = game["host_user"]["uid"].stringValue
+                    
+                    list.append(g)
+                    
+                }
+                
+                onCompletion(list,nil)
+            }
+            else {
+                //the web service to create a user failed. Lets extract the error message to be displayed
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                print(errorMessage)
+                //execute the closure in the ViewController
+                onCompletion(nil,errorMessage)
+            }
+        })
         
     }
 
