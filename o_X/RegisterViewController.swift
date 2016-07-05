@@ -43,7 +43,6 @@ class RegisterViewController: UIViewController {
                 failAlert.addAction(alertAction)
                 
                 self.presentViewController(failAlert, animated: true, completion: nil)
-
                 
             }
         }
