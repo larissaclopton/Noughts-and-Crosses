@@ -42,7 +42,7 @@ class UserController: WebService {
             user.email = email
             user.password = "not_saved"
             
-            if (responseCode/100 == 2)   { //if the responseCode is 2xx (any responseCode in the 200's range is a success case. For example, some servers return 201 for successful object creation)
+            if (responseCode/100 == 2) { //if the responseCode is 2xx (any responseCode in the 200's range is a success case. For example, some servers return 201 for successful object creation)
                 
                 //successfully registered user. get the obtained data from the json response data and create the user object to give back to the calling ViewController
                 
@@ -64,70 +64,26 @@ class UserController: WebService {
                 
                 //lets execute that closure now - Lets me be clear. This is 1 step more advanced than normal. We are executing a closure inside a closure (we are executing the viewControllerCompletionFunction from within the requestCompletionFunction.
                 onCompletion(user,nil)
-            }   else    {
+            }
+            else {
+                
                 //the web service to create a user failed. Lets extract the error message to be displayed
                 let errorMessage = json["errors"]["full_messages"][0].stringValue
                 //execute the closure in the ViewController
                 onCompletion(nil,errorMessage)
+                
             }
         })
   
         
         //we are now done with the registerUser function. Note that this function doesnt return anything. But because of the viewControllerCompletionFunction closure we are given as an input parameter, we can set in motion a function in the calling class when it is needed.
     
-        // previous implementation
-        
-        /*var userExists = false
-        
-        // search all registered users for a matching email
-        for index in 0 ..< registeredUsers.count {
-            if (email == registeredUsers[index].email) {
-                userExists = true
-                break
-            }
-        }
-        
-        if (userExists) {
-            
-            onCompletion(nil, "Email address already exists.")
-            
-        }
-        else if password.characters.count < 6 {
-            
-            onCompletion(nil, "Password must be at least 6 characters.")
-            
-        }
-        else {
-            
-            // fill in currentUser properties
-            currentUser.email = email
-            currentUser.password = password
-            currentlyLoggedIn = currentUser
-            registeredUsers += [currentUser]
-            
-            onCompletion(currentUser, nil)
-            
-            // set currentUserEmail and currentUserPassword
-            let defaults = NSUserDefaults.standardUserDefaults()
-            
-            defaults.setObject(currentlyLoggedIn!.email, forKey: "currentUserEmail")
-            defaults.setObject(currentlyLoggedIn!.password, forKey: "currentUserPassword")
-            defaults.synchronize()
-            
-            
-        }*/
-        
     }
     
     func login(email email: String, password: String, onCompletion: (User?, String?) -> Void) {
         
         let user = ["email":email,"password":password]
         
-        //remember a request has 4 things:
-        //1: A endpoint
-        //2: A method
-        //3: input data (optional)
-        //4: A response
         let request = self.createMutableAnonRequest(NSURL(string: "https://ox-backend.herokuapp.com/auth/sign_in"), method: "POST", parameters: user)
 
         self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
@@ -137,7 +93,7 @@ class UserController: WebService {
             user.email = email
             user.password = "not_saved"
             
-            if (responseCode/100 == 2)   {
+            if (responseCode/100 == 2) {
             
                user = User(email: json["data"]["email"].stringValue,password:"not_given_and_not_stored", token:json["data"]["token"].stringValue, client:json["data"]["client"].stringValue)
             
@@ -150,45 +106,14 @@ class UserController: WebService {
                 defaults.synchronize()
 
                 onCompletion(user,nil)
-            }   else    {
-                //the web service to create a user failed. Lets extract the error message to be displayed
+            }
+            else {
+                
                 let errorMessage = json["errors"]["full_messages"][0].stringValue
-                //execute the closure in the ViewController
                 onCompletion(nil,errorMessage)
+                
             }
         })
-        
-        // previous implementation
-        
-        /*var existingUser: User? = nil
-        
-        // verify that the login info matches an existing user
-        for index in 0 ..< registeredUsers.count {
-            if (email == registeredUsers[index].email && password == registeredUsers[index].password) {
-                existingUser = registeredUsers[index]
-                break
-            }
-        }
-        
-        if existingUser != nil {
-            
-            onCompletion(existingUser, nil)
-            currentlyLoggedIn = currentUser
-            
-            // set currentUserEmail and currentUserPassword
-            let defaults = NSUserDefaults.standardUserDefaults()
-            
-            defaults.setObject(currentlyLoggedIn!.email, forKey: "currentUserEmail")
-            defaults.setObject(currentlyLoggedIn!.password, forKey: "currentUserPassword")
-            defaults.synchronize()
-            
-        }
-        else {
-            
-            onCompletion(nil, "Username or password is incorrect.")
-            
-        }*/
-        
     }
     
     func logout(onCompletion onCompletion: (String?) -> Void) {
