@@ -35,7 +35,7 @@
 		2E926BFD3AED5452BB2EB68A /* Pods-o_X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o_X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-o_X/Pods-o_X.debug.xcconfig"; sourceTree = "<group>"; };
 		31FCBFB51E4838A4C906D4C9 /* Pods-o_X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o_X.release.xcconfig"; path = "Pods/Target Support Files/Pods-o_X/Pods-o_X.release.xcconfig"; sourceTree = "<group>"; };
 		4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkGamesTableViewController.swift; sourceTree = "<group>"; };
-		4ECADC711D2BDA3300CBC606 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		4ECADC711D2BDA3300CBC606 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = ../WebService.swift; sourceTree = "<group>"; };
 		4ED93ED01D23D3B100735E07 /* OXGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGame.swift; sourceTree = "<group>"; };
 		4ED93ED81D24089000735E07 /* OXGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGameController.swift; sourceTree = "<group>"; };
 		4ED93F361D258CA400735E07 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -61,7 +61,6 @@
 		02F782B91D22966500E3BC29 = {
 			isa = PBXGroup;
 			children = (
-				4ECADC711D2BDA3300CBC606 /* WebService.swift */,
 				02F782C41D22966600E3BC29 /* o_X */,
 				02F782C31D22966500E3BC29 /* Products */,
 				9E7E8DCE3C460F7F63080D0C /* Pods */,
@@ -81,19 +80,20 @@
 			isa = PBXGroup;
 			children = (
 				02F782C51D22966600E3BC29 /* AppDelegate.swift */,
-				02F782C71D22966600E3BC29 /* BoardViewController.swift */,
-				02F782C91D22966600E3BC29 /* Main.storyboard */,
-				4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */,
+				4ECADC711D2BDA3300CBC606 /* WebService.swift */,
 				4ED93ED01D23D3B100735E07 /* OXGame.swift */,
 				4ED93F361D258CA400735E07 /* User.swift */,
+				02F782C71D22966600E3BC29 /* BoardViewController.swift */,
+				4ECADC6F1D2A6F0400CBC606 /* NetworkGamesTableViewController.swift */,
 				4ED93F381D258D3500735E07 /* UserController.swift */,
-				4ED93F3A1D25A39E00735E07 /* Onboarding.storyboard */,
 				4ED93F3C1D25B0EC00735E07 /* RegisterViewController.swift */,
 				4ED93F3E1D25B0FF00735E07 /* LoginViewController.swift */,
-				02F782CC1D22966600E3BC29 /* Assets.xcassets */,
-				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
-				02F782D11D22966600E3BC29 /* Info.plist */,
 				4ED93ED81D24089000735E07 /* OXGameController.swift */,
+				02F782C91D22966600E3BC29 /* Main.storyboard */,
+				4ED93F3A1D25A39E00735E07 /* Onboarding.storyboard */,
+				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
+				02F782CC1D22966600E3BC29 /* Assets.xcassets */,
+				02F782D11D22966600E3BC29 /* Info.plist */,
 			);
 			path = o_X;
 			sourceTree = "<group>";
