@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BoardViewController: UIViewController {
     

@@ -334,7 +334,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qI2-rv-PBI"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="H5J-qi-SEO" kind="push" identifier="newGame" id="SjK-G4-9gR"/>
+                        <segue destination="H5J-qi-SEO" kind="modal" identifier="newGame" id="SjK-G4-9gR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ee4-Zo-6kP" userLabel="First Responder" sceneMemberID="firstResponder"/>
