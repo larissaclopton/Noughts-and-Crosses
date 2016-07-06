@@ -39,15 +39,6 @@ class OXGame: NSObject {
     
     override init()  {
         super.init()
-        //we are simulating setting our board from the internet
-        let simulatedBoardStringFromNetwork = "_________" //update this string to different values to test your model serialisation
-        deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
-        if(simulatedBoardStringFromNetwork == serialiseBoard()) {
-            print("string matches serialised board")
-        }
-        else  {
-           print("string does not match serialised board")
-        }
         
     }
     func getTurn() -> Int{
@@ -112,17 +103,7 @@ class OXGame: NSObject {
          return  CellType.O
         }
     }
-    
-    /*func updateTurn() {
-        // update currentPlayer to other player
-        if(currentPlayer == CellType.O) {
-            currentPlayer = CellType.X
-        }
-        else {
-            currentPlayer = CellType.O
-        }
-    }*/
-    
+
     func playMove(cellNumber: Int) -> CellType {
         
         board[cellNumber] = whoseTurn()

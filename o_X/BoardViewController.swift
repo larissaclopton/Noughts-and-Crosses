@@ -84,14 +84,14 @@ class BoardViewController: UIViewController {
             // otherwise, play move and set button title
             else {
                 if (self.networkMode) {
-                    print(OXGameController.sharedInstance.getCurrentGame().currentPlayer.rawValue)
+                    
                     OXGameController.sharedInstance.playMove(sender.tag)
-                    print(OXGameController.sharedInstance.getCurrentGame().serialiseBoard())
+                    
                     OXGameController.sharedInstance.playMove() {
                         self.updateUI()
                         
                     }
-                    print(OXGameController.sharedInstance.getCurrentGame().currentPlayer.rawValue)
+                    
                     
                 }
                 else {
@@ -119,9 +119,9 @@ class BoardViewController: UIViewController {
             }
             else if (gameState == OXGameState.Won) {
                 
-                //OXGameController.sharedInstance.getCurrentGame().updateTurn()
+                let game = OXGameController.sharedInstance.getCurrentGame()
                 
-                let winAlert = UIAlertController(title: "Game Over", message: "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
+                let winAlert = UIAlertController(title: "Game Over", message: "\(game.currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
                 
                 winAlert.addAction(alertAction)
                 
@@ -149,15 +149,72 @@ class BoardViewController: UIViewController {
     
     
     @IBAction func cancelNetworkGame(sender: UIBarButtonItem) {
+        
+        OXGameController.sharedInstance.cancelGame() {
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
     }
     
     @IBAction func refreshNetworkGame(sender: UIBarButtonItem) {
         
-        OXGameController.sharedInstance.getGame() {_ in
+        let refreshMessage = {(message: String?) in
             self.updateUI()
+            let game = OXGameController.sharedInstance.getCurrentGame()
+            
+            if message == "in_progress" {
+                
+                
+                if OXGameController.sharedInstance.getCurrentGame().whoseTurn() == game.currentPlayer {
+                    self.gameStateMessage.text = "Play your move"
+                }
+                else {
+                    self.gameStateMessage.text = "Waiting for opponent"
+                }
+            }
+            else if message == "abandoned" {
+                self.gameStateMessage.text = "Game canceled"
+            }
+            
+            switch OXGameController.sharedInstance.getCurrentGame().state() {
+            case .Won:
+                var winner = CellType.X.rawValue
+                if (game.currentPlayer == CellType.X) {
+                    winner = CellType.O.rawValue
+                }
+                
+                let winAlert = UIAlertController(title: "Game Over", message: "\(winner) won", preferredStyle:UIAlertControllerStyle.Alert)
+                let dismissAlert = UIAlertAction(title: "Dismiss", style: .Default, handler: {(action) in
+                    if (!self.networkMode) {
+                        self.newGameButton.hidden = false
+                    }
+                })
+                
+                winAlert.addAction(dismissAlert)
+                self.presentViewController(winAlert, animated: true, completion: nil)
+                return
+                
+            case .Tie:
+                let tieAlert = UIAlertController(title: "Game Over", message: "It's a tie", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let dismissAlert = UIAlertAction(title: "Dismiss", style: .Default, handler: {(action) in
+                    if (!self.networkMode) {
+                        self.newGameButton.hidden = false
+                    }
+                })
+                
+                tieAlert.addAction(dismissAlert)
+                self.presentViewController(tieAlert, animated: true, completion: nil)
+                return
+            default:
+                // do nothing
+                break
+            }
         }
         
-        
+        OXGameController.sharedInstance.getGame(refreshMessage)
+    
     }
     
     

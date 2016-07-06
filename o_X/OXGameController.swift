@@ -73,6 +73,7 @@ class OXGameController: WebService {
                 newGame.ID = json["id"].intValue
                 newGame.host = json["host_user"]["uid"].stringValue
                 newGame.deserialiseBoard(json["board"].stringValue)
+                newGame.currentPlayer = CellType.X
                 
                 OXGameController.sharedInstance.currentGame = newGame
                 
@@ -106,6 +107,7 @@ class OXGameController: WebService {
                 newGame.ID = json["id"].intValue
                 newGame.host = json["host_user"]["uid"].stringValue
                 newGame.deserialiseBoard(json["board"].stringValue)
+                newGame.currentPlayer = CellType.O
                 
                 OXGameController.sharedInstance.currentGame = newGame
                 
@@ -171,19 +173,46 @@ class OXGameController: WebService {
             if (responseCode/100 == 2) {
                 
                 game.deserialiseBoard(json["board"].stringValue)
-                onCompletion(nil)
+                
+                onCompletion(json["state"].stringValue)
                 
             }
             else {
                 
-                let errorMessage = json["errors"]["full_messages"][0].stringValue
-                onCompletion(errorMessage)
+                onCompletion(nil)
                 
             }
 
          
         })
 
+    }
+    
+    func cancelGame(onCompletion: () -> Void) {
+        
+        let game = OXGameController.sharedInstance.currentGame
+        
+        let gameID = String(game.ID)
+        
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/\(gameID)"), method: "DELETE", parameters: nil)
+        
+        self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            print(json)
+            
+            if (responseCode/100 == 2) {
+                
+                onCompletion()
+                
+            }
+            else {
+                
+                onCompletion()
+                
+            }
+            
+        })
+        
     }
 
 }
