@@ -39,9 +39,7 @@ class UserController: WebService {
             
             print(json)
             var user:User = User(email: email, password: password, token: "", client:"")
-            user.email = email
-            user.password = "not_saved"
-            
+       
             if (responseCode/100 == 2) { //if the responseCode is 2xx (any responseCode in the 200's range is a success case. For example, some servers return 201 for successful object creation)
                 
                 //successfully registered user. get the obtained data from the json response data and create the user object to give back to the calling ViewController
@@ -55,9 +53,12 @@ class UserController: WebService {
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
                 
-                defaults.setObject(self.currentlyLoggedIn!.email, forKey: "currentUserEmail")
-                defaults.setObject(self.currentlyLoggedIn!.password, forKey: "currentUserPassword")
+                defaults.setObject(email, forKey: "currentUserEmail")
+                defaults.setObject(password, forKey: "currentUserPassword")
                 defaults.synchronize()
+                
+                
+                
                 
                 //Note that our registerUser function has 4 parameters: email, password, presentingViewController and requestCompletionFunction
                 //requestCompletionFunction is a closure for what is to happen in the ViewController when we are done with the webservice.
@@ -101,8 +102,8 @@ class UserController: WebService {
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
                 
-                defaults.setObject(self.currentlyLoggedIn!.email, forKey: "currentUserEmail")
-                defaults.setObject(self.currentlyLoggedIn!.password, forKey: "currentUserPassword")
+                defaults.setObject(email, forKey: "currentUserEmail")
+                defaults.setObject(password, forKey: "currentUserPassword")
                 defaults.synchronize()
 
                 onCompletion(user,nil)
@@ -129,6 +130,7 @@ class UserController: WebService {
         onCompletion("logged out")
 
     }
+    
 
 }
 

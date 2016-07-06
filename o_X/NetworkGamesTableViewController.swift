@@ -56,6 +56,13 @@ class NetworkGamesTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func addNewGame(sender: AnyObject) {
+        
+        OXGameController.sharedInstance.hostGame()
+        //bring to clean board
+        
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("GameInfo", forIndexPath: indexPath)

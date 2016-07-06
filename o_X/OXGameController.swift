@@ -37,11 +37,11 @@ class OXGameController: WebService {
                 
                 for game in json.arrayValue {
                     
-                    let g = OXGame()
-                    g.ID = game["id"].intValue
-                    g.host = game["host_user"]["uid"].stringValue
+                    let newGame = OXGame()
+                    newGame.ID = game["id"].intValue
+                    newGame.host = game["host_user"]["uid"].stringValue
                     
-                    list.append(g)
+                    list.append(newGame)
                     
                 }
                 
@@ -53,6 +53,36 @@ class OXGameController: WebService {
                 print(errorMessage)
                 //execute the closure in the ViewController
                 onCompletion(nil,errorMessage)
+            }
+        })
+        
+    }
+    
+    
+    
+    func hostGame() {
+        
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/"), method: "POST", parameters: nil)
+        
+        self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            print(json)
+            
+            if (responseCode/100 == 2) {
+                
+                var newGame = OXGame()
+                
+                newGame.ID = json["id"].intValue
+                newGame.host = json["host_user"]["uid"].stringValue
+                newGame.updateBoard(json["board"].stringValue)
+                
+                OXGameController.sharedInstance.currentGame = newGame
+                
+                //onCompletion(,nil)
+            }
+            else {
+                
+                
             }
         })
         

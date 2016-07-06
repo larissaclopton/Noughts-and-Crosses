@@ -28,8 +28,8 @@ enum OXGameState {
 
 class OXGame: NSObject {
     
-    var ID: Int = 436030
-    var host: String = "Anyone"
+    var ID: Int = 0
+    var host: String = ""
     
     var board = Array(count: 9, repeatedValue: CellType.Empty)
     var startType = CellType.X
@@ -150,5 +150,12 @@ class OXGame: NSObject {
         board = Array(count: 9, repeatedValue: CellType.Empty)
         numTurns = 0
         currentPlayer = CellType.X
+    }
+    
+    func updateBoard(boardString: String) {
+        
+        self.board = deserialiseBoard(boardString)
+        
+        
     }
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         
         // bring the current user directly to the board
-        let registerMessage = {(user: User?, message: String?) in
+        let loginMessage = {(user: User?, message: String?) in
             if user != nil {
                 
                 // if register succeeds, switch to the game board
@@ -37,7 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // if there is a current user, automatically register them
         if let email:String = defaults.stringForKey("currentUserEmail") as String!, password:String = defaults.stringForKey("currentUserPassword") as String! {
             
-            UserController.sharedInstance.register(email: email, password: password, onCompletion: registerMessage)
+            
+            print(email)
+            print(password)
+            
+            UserController.sharedInstance.login(email: email, password: password, onCompletion: loginMessage)
             
         }
         
