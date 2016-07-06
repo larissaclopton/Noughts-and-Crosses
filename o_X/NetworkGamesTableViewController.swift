@@ -12,7 +12,6 @@ class NetworkGamesTableViewController: UITableViewController {
     
     var gameList: [OXGame] = []
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,8 +57,26 @@ class NetworkGamesTableViewController: UITableViewController {
     
     @IBAction func addNewGame(sender: AnyObject) {
         
-        OXGameController.sharedInstance.hostGame()
-        //bring to clean board
+        let newGameMessage = {(game: OXGame?, message: String?) in
+            if game != nil {
+                
+               self.performSegueWithIdentifier("newGame", sender: self)
+                
+            }
+            else {
+                
+                let failAlert = UIAlertController(title: "Cannot host new game", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                
+                failAlert.addAction(alertAction)
+                
+                self.presentViewController(failAlert, animated: true, completion: nil)
+                
+            }
+        }
+
+        OXGameController.sharedInstance.hostGame(onCompletion: newGameMessage)
         
     }
     
@@ -75,8 +92,28 @@ class NetworkGamesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        performSegueWithIdentifier("newGame", sender: self)
+        let joinGameMessage = {(game: OXGame?, message: String?) in
+            if game != nil {
+                
+                self.performSegueWithIdentifier("newGame", sender: self)
+                
+            }
+            else {
+                
+                let failAlert = UIAlertController(title: "Cannot join game", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                
+                failAlert.addAction(alertAction)
+                
+                self.presentViewController(failAlert, animated: true, completion: nil)
+                
+            }
+        }
         
+        let gameID = String(gameList[indexPath.row].ID)
+        
+        OXGameController.sharedInstance.acceptGame(gameID, onCompletion: joinGameMessage)
     }
 
 }

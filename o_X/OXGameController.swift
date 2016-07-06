@@ -58,9 +58,7 @@ class OXGameController: WebService {
         
     }
     
-    
-    
-    func hostGame() {
+    func hostGame(onCompletion onCompletion: (OXGame?, String?) -> Void) {
         
         let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/"), method: "POST", parameters: nil)
         
@@ -70,22 +68,122 @@ class OXGameController: WebService {
             
             if (responseCode/100 == 2) {
                 
-                var newGame = OXGame()
+                let newGame = OXGame()
                 
                 newGame.ID = json["id"].intValue
                 newGame.host = json["host_user"]["uid"].stringValue
-                newGame.updateBoard(json["board"].stringValue)
+                newGame.deserialiseBoard(json["board"].stringValue)
                 
                 OXGameController.sharedInstance.currentGame = newGame
                 
-                //onCompletion(,nil)
+                onCompletion(OXGameController.sharedInstance.currentGame, nil)
             }
             else {
                 
+                //the web service to create a user failed. Lets extract the error message to be displayed
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                print(errorMessage)
+                //execute the closure in the ViewController
+                onCompletion(nil,errorMessage)
                 
             }
         })
         
+    }
+    
+    func acceptGame(gameID: String, onCompletion: (OXGame?, String?) -> Void) {
+        
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/\(gameID)/join"), method: "GET", parameters: nil)
+        
+        self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            print(json)
+    
+            if (responseCode/100 == 2) {
+                
+                let newGame = OXGame()
+                
+                newGame.ID = json["id"].intValue
+                newGame.host = json["host_user"]["uid"].stringValue
+                newGame.deserialiseBoard(json["board"].stringValue)
+                
+                OXGameController.sharedInstance.currentGame = newGame
+                
+                onCompletion(OXGameController.sharedInstance.currentGame, nil)
+            }
+            else {
+                
+                //the web service to create a user failed. Lets extract the error message to be displayed
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                print(errorMessage)
+                //execute the closure in the ViewController
+                onCompletion(nil,errorMessage)
+                
+            }
+        })
+
+        
+    }
+    
+    func playMove(onCompletion: () -> Void) {
+        
+        let game = OXGameController.sharedInstance.currentGame
+        
+        let boardString =  game.serialiseBoard()
+        
+        let gameID = String(game.ID)
+        
+        let boardStatus = ["board":boardString]
+        
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/\(gameID)"), method: "PUT", parameters: boardStatus)
+        
+        self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            print(json)
+            
+            if (responseCode/100 == 2) {
+               
+               onCompletion()
+               
+            }
+        else {
+    
+            onCompletion()
+    
+        }
+
+        })
+
+    }
+    
+    func getGame(onCompletion: (String?) -> Void) {
+    
+        let game = OXGameController.sharedInstance.currentGame
+        
+        let gameID = String(game.ID)
+        
+        let request = createMutableRequest(NSURL(string: "https://ox-backend.herokuapp.com/games/\(gameID)"), method: "GET", parameters: nil)
+        
+        self.executeRequest(request, requestCompletionFunction: {(responseCode, json) in
+            
+            print(json)
+            
+            if (responseCode/100 == 2) {
+                
+                game.deserialiseBoard(json["board"].stringValue)
+                onCompletion(nil)
+                
+            }
+            else {
+                
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                onCompletion(errorMessage)
+                
+            }
+
+         
+        })
+
     }
 
 }

@@ -37,10 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // if there is a current user, automatically register them
         if let email:String = defaults.stringForKey("currentUserEmail") as String!, password:String = defaults.stringForKey("currentUserPassword") as String! {
             
-            
-            print(email)
-            print(password)
-            
             UserController.sharedInstance.login(email: email, password: password, onCompletion: loginMessage)
             
         }

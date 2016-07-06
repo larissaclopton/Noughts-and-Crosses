@@ -33,7 +33,6 @@ class OXGame: NSObject {
     
     var board = Array(count: 9, repeatedValue: CellType.Empty)
     var startType = CellType.X
-    var numTurns = 0
     
     // X is the first player
     var currentPlayer = CellType.X
@@ -42,7 +41,7 @@ class OXGame: NSObject {
         super.init()
         //we are simulating setting our board from the internet
         let simulatedBoardStringFromNetwork = "_________" //update this string to different values to test your model serialisation
-        self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
+        deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
         if(simulatedBoardStringFromNetwork == serialiseBoard()) {
             print("string matches serialised board")
         }
@@ -51,8 +50,16 @@ class OXGame: NSObject {
         }
         
     }
-    
-    private func deserialiseBoard(boardString: String) -> [CellType] {
+    func getTurn() -> Int{
+        var turns = 0
+        for cell in board{
+            if cell == CellType.O || cell == CellType.X{
+                turns+=1
+            }
+        }
+        return turns
+    }
+    func deserialiseBoard(boardString: String) {
         
         var tempBoard = [CellType]()
         
@@ -67,12 +74,12 @@ class OXGame: NSObject {
                 tempBoard += [CellType.Empty]
             }
         }
-        
-        return tempBoard
+        self.board = tempBoard
+        return
         
     }
     
-    private func serialiseBoard() -> String {
+    func serialiseBoard() -> String {
         
         var boardString = ""
         
@@ -93,15 +100,20 @@ class OXGame: NSObject {
     
     func turnCount() -> Int {
         // returns the number of counts in a game
-        return numTurns
+        return getTurn()
     }
     
     func whoseTurn() -> CellType {
         // return CellType of whose turn it is
-        return currentPlayer
+        if getTurn()%2 == 0{
+         return CellType.X
+        }
+        else {
+         return  CellType.O
+        }
     }
     
-    func updateTurn() {
+    /*func updateTurn() {
         // update currentPlayer to other player
         if(currentPlayer == CellType.O) {
             currentPlayer = CellType.X
@@ -109,13 +121,11 @@ class OXGame: NSObject {
         else {
             currentPlayer = CellType.O
         }
-    }
+    }*/
     
     func playMove(cellNumber: Int) -> CellType {
         
         board[cellNumber] = whoseTurn()
-        numTurns += 1
-        updateTurn()
         
         return board[cellNumber]
     }
@@ -148,14 +158,7 @@ class OXGame: NSObject {
     func reset() {
         // reset all cells to be empty and the turn count to be 0
         board = Array(count: 9, repeatedValue: CellType.Empty)
-        numTurns = 0
         currentPlayer = CellType.X
     }
-    
-    func updateBoard(boardString: String) {
-        
-        self.board = deserialiseBoard(boardString)
-        
-        
-    }
+
 }

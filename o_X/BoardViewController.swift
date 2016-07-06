@@ -67,56 +67,68 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func cellTapped(sender: UIButton){
-        
-        // if illegal move, display an alert
-        if OXGameController.sharedInstance.getCurrentGame().board[sender.tag] != CellType.Empty {
             
-            let illegalMoveAlert = UIAlertController(title: "Illegal Move", message: "Square already filled, please play again.", preferredStyle:UIAlertControllerStyle.Alert)
-            
-            let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            
-            illegalMoveAlert.addAction(alertAction)
-            
-            self.presentViewController(illegalMoveAlert, animated: true, completion: nil)
-            
-            return
-        }
-        // otherwise, play move and set button title
-        else {
-            sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
-        }
-        
-        // retrieve the current game state
-        let gameState = OXGameController.sharedInstance.getCurrentGame().state()
-        
-        let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
-            if self.networkMode == false {
-                self.newGameButton.hidden = false
+            // if illegal move, display an alert
+            if OXGameController.sharedInstance.getCurrentGame().board[sender.tag] != CellType.Empty {
+                
+                let illegalMoveAlert = UIAlertController(title: "Illegal Move", message: "Square already filled, please play again.", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                
+                illegalMoveAlert.addAction(alertAction)
+                
+                self.presentViewController(illegalMoveAlert, animated: true, completion: nil)
+                
+                return
             }
-        })
+            // otherwise, play move and set button title
+            else {
+                if (self.networkMode) {
+                    print(OXGameController.sharedInstance.getCurrentGame().currentPlayer.rawValue)
+                    OXGameController.sharedInstance.playMove(sender.tag)
+                    print(OXGameController.sharedInstance.getCurrentGame().serialiseBoard())
+                    OXGameController.sharedInstance.playMove() {
+                        self.updateUI()
+                        
+                    }
+                    print(OXGameController.sharedInstance.getCurrentGame().currentPlayer.rawValue)
+                    
+                }
+                else {
+                    sender.setTitle(OXGameController.sharedInstance.playMove(sender.tag).rawValue, forState: UIControlState.Normal)
+                }
+            
+            // retrieve the current game state
+            let gameState = OXGameController.sharedInstance.getCurrentGame().state()
         
-        // display alerts for ties and wins
-        if (gameState == OXGameState.Tie) {
-            
-            let tieAlert = UIAlertController(title: "Game Over", message: "It's a tie", preferredStyle:UIAlertControllerStyle.Alert)
-            
-            tieAlert.addAction(alertAction)
-            
-            self.presentViewController(tieAlert, animated: true, completion: nil)
-            
-        }
-        else if (gameState == OXGameState.Won) {
-            
-            OXGameController.sharedInstance.getCurrentGame().updateTurn()
-            
-            let winAlert = UIAlertController(title: "Game Over", message: "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
-            
-            winAlert.addAction(alertAction)
-            
-            self.presentViewController(winAlert, animated: true, completion: nil)
-            
-        }
+            let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: { (action) in
+                if self.networkMode == false {
+                    self.newGameButton.hidden = false
+                }
+            })
         
+            // display alerts for ties and wins
+            if (gameState == OXGameState.Tie) {
+                
+                let tieAlert = UIAlertController(title: "Game Over", message: "It's a tie", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                tieAlert.addAction(alertAction)
+                
+                self.presentViewController(tieAlert, animated: true, completion: nil)
+                
+            }
+            else if (gameState == OXGameState.Won) {
+                
+                //OXGameController.sharedInstance.getCurrentGame().updateTurn()
+                
+                let winAlert = UIAlertController(title: "Game Over", message: "\(OXGameController.sharedInstance.getCurrentGame().currentPlayer) won", preferredStyle:UIAlertControllerStyle.Alert)
+                
+                winAlert.addAction(alertAction)
+                
+                self.presentViewController(winAlert, animated: true, completion: nil)
+                
+            }
+        }
     }
     
     @IBAction func logoutTapped(sender: UIButton) {
@@ -134,6 +146,20 @@ class BoardViewController: UIViewController {
         UserController.sharedInstance.logout(onCompletion: logoutMessage)
         
     }
+    
+    
+    @IBAction func cancelNetworkGame(sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func refreshNetworkGame(sender: UIBarButtonItem) {
+        
+        OXGameController.sharedInstance.getGame() {_ in
+            self.updateUI()
+        }
+        
+        
+    }
+    
     
     func updateUI() {
         
