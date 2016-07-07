@@ -127,13 +127,15 @@ class OXGameController: WebService {
         
     }
     
-    func playMove(onCompletion: () -> Void) {
+    func playMove(onCompletion: (String?) -> Void) {
         
         let game = OXGameController.sharedInstance.currentGame
         
         let boardString =  game.serialiseBoard()
         
         let gameID = String(game.ID)
+        
+        //let host = game.host
         
         let boardStatus = ["board":boardString]
         
@@ -145,12 +147,12 @@ class OXGameController: WebService {
             
             if (responseCode/100 == 2) {
                
-               onCompletion()
+               onCompletion(nil)
                
             }
         else {
     
-            onCompletion()
+            onCompletion(json["error"].stringValue)
     
         }
 

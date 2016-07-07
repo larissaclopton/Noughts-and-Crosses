@@ -67,7 +67,32 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func cellTapped(sender: UIButton){
+        
+        let testPlayMove = {(message: String?) in
             
+            if message == "invalid move" {
+                
+                let game = OXGameController.sharedInstance.getCurrentGame()
+                
+                    let illegalMoveAlert = UIAlertController(title: "Cannot play move", message: "Please wait your turn.", preferredStyle:UIAlertControllerStyle.Alert)
+                    
+                    let alertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    
+                    illegalMoveAlert.addAction(alertAction)
+                    
+                    game.board[sender.tag] = CellType.Empty
+                    
+                    self.presentViewController(illegalMoveAlert, animated: true, completion: nil)
+                    
+            }
+            else {
+                
+                self.updateUI()
+                
+            }
+            
+        }
+        
             // if illegal move, display an alert
             if OXGameController.sharedInstance.getCurrentGame().board[sender.tag] != CellType.Empty {
                 
@@ -87,11 +112,7 @@ class BoardViewController: UIViewController {
                     
                     OXGameController.sharedInstance.playMove(sender.tag)
                     
-                    OXGameController.sharedInstance.playMove() {
-                        self.updateUI()
-                        
-                    }
-                    
+                    OXGameController.sharedInstance.playMove(testPlayMove)
                     
                 }
                 else {
