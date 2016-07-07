@@ -84,7 +84,7 @@ class NetworkGamesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("GameInfo", forIndexPath: indexPath)
 
-        cell.textLabel?.text = " Game \(gameList[indexPath.row].ID) @ \(gameList[indexPath.row].host)"
+        cell.textLabel?.text = "Play \(gameList[indexPath.row].host) on game \(gameList[indexPath.row].ID)"
     
         return cell
         

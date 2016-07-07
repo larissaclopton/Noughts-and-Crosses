@@ -31,9 +31,27 @@ class BoardViewController: UIViewController {
         super.viewDidLoad()
         
         // hide the new game button
-        if networkMode == false {
-        newGameButton.hidden = true
+        if (networkMode) {
+        
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            let game = OXGameController.sharedInstance.getCurrentGame()
+            
+            if game.host == defaults.stringForKey("currentUserEmail") {
+            
+                gameStateMessage.text = "Play your move"
+                
+            }
+            else {
+                
+                gameStateMessage.text = "Waiting for opponent"
+                
+            }
         }
+        else {
+            newGameButton.hidden = true
+        }
+        
         
         // setup the board
         updateUI()
@@ -88,6 +106,7 @@ class BoardViewController: UIViewController {
             else {
                 
                 self.updateUI()
+                self.gameStateMessage.text = "Waiting for opponent"
                 
             }
             
@@ -185,7 +204,6 @@ class BoardViewController: UIViewController {
             let game = OXGameController.sharedInstance.getCurrentGame()
             
             if message == "in_progress" {
-                
                 
                 if OXGameController.sharedInstance.getCurrentGame().whoseTurn() == game.currentPlayer {
                     self.gameStateMessage.text = "Play your move"
