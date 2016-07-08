@@ -24,6 +24,7 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var button9:
         UIButton!
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     @IBOutlet weak var gameStateMessage: UILabel!
     
@@ -156,6 +157,8 @@ class BoardViewController: UIViewController {
                 
                 self.presentViewController(tieAlert, animated: true, completion: nil)
                 
+                refreshButton.enabled = false
+                
             }
             else if (gameState == OXGameState.Won) {
                 
@@ -166,6 +169,8 @@ class BoardViewController: UIViewController {
                 winAlert.addAction(alertAction)
                 
                 self.presentViewController(winAlert, animated: true, completion: nil)
+                
+                refreshButton.enabled = false
                 
             }
         }
@@ -214,6 +219,7 @@ class BoardViewController: UIViewController {
             }
             else if message == "abandoned" {
                 self.gameStateMessage.text = "Game canceled"
+                sender.enabled = false
             }
             
             switch OXGameController.sharedInstance.getCurrentGame().state() {
@@ -228,6 +234,10 @@ class BoardViewController: UIViewController {
                     if (!self.networkMode) {
                         self.newGameButton.hidden = false
                     }
+                    else {
+                        self.gameStateMessage.text = "Game ended"
+                        sender.enabled = false
+                    }
                 })
                 
                 winAlert.addAction(dismissAlert)
@@ -240,6 +250,10 @@ class BoardViewController: UIViewController {
                 let dismissAlert = UIAlertAction(title: "Dismiss", style: .Default, handler: {(action) in
                     if (!self.networkMode) {
                         self.newGameButton.hidden = false
+                    }
+                    else {
+                        self.gameStateMessage.text = "Game ended"
+                        sender.enabled = false
                     }
                 })
                 

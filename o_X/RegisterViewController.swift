@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailInput: UITextField!
     
@@ -17,7 +17,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.emailInput.delegate = self
+        self.passwordInput.delegate = self
     }
     
     @IBAction func registerButtonTapped(sender: UIButton) {
@@ -49,6 +50,11 @@ class RegisterViewController: UIViewController {
         
         UserController.sharedInstance.register(email: emailInput.text!, password: passwordInput.text!, onCompletion: registerMessage)
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
 }

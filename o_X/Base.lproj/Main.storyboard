@@ -634,6 +634,7 @@
                         <outlet property="button8" destination="7AY-Zz-SzS" id="vfr-cG-dna"/>
                         <outlet property="button9" destination="hOr-yR-IsX" id="Lrz-V9-57V"/>
                         <outlet property="gameStateMessage" destination="UY8-PE-3b8" id="CTp-Mh-BYy"/>
+                        <outlet property="refreshButton" destination="p60-Yk-Syg" id="oRQ-m3-jZe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGw-F8-Y02" sceneMemberID="firstResponder"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -16,7 +16,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.emailInput.delegate = self
+        self.passwordInput.delegate = self
     }
     
     @IBAction func loginButtonTapped(sender: UIButton) {
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
             else {
                 
                 // if login fails
-                let failAlert = UIAlertController(title: "Login failed", message: message, preferredStyle:UIAlertControllerStyle.Alert)
+                let failAlert = UIAlertController(title: "Login failed", message: "Invalid credentials. Please try again.", preferredStyle:UIAlertControllerStyle.Alert)
                 
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
                 
@@ -49,6 +50,11 @@ class LoginViewController: UIViewController {
         
         UserController.sharedInstance.login(email: emailInput.text!, password: passwordInput.text!, onCompletion: loginMessage)
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
 }
