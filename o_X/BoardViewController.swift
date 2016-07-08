@@ -157,7 +157,10 @@ class BoardViewController: UIViewController {
                 
                 self.presentViewController(tieAlert, animated: true, completion: nil)
                 
-                refreshButton.enabled = false
+                if self.networkMode {
+                
+                    refreshButton.enabled = false
+                }
                 
             }
             else if (gameState == OXGameState.Won) {
@@ -170,8 +173,10 @@ class BoardViewController: UIViewController {
                 
                 self.presentViewController(winAlert, animated: true, completion: nil)
                 
-                refreshButton.enabled = false
-                
+                if self.networkMode {
+                    
+                    refreshButton.enabled = false
+                }
             }
         }
     }
